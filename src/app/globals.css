@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  --ta: #b99887;
+  --ta-rgb: 185, 152, 135;
+  --tb: #0c0c20;
+  --tb-rgb: 12, 12, 32;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--ta-rgb), 0.15) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(var(--ta-rgb), 0.18);
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  background-clip: content-box;
+}
+
+@keyframes p-in  { from { opacity: 0;    } to { opacity: 0.13; } }
+@keyframes p-out { from { opacity: 0.13; } to { opacity: 0;    } }
+
+@keyframes light-drift {
+  0%   { transform: translateX(-50%) translate(  0px,   0px); }
+  20%  { transform: translateX(-50%) translate(  7px,  -9px); }
+  45%  { transform: translateX(-50%) translate( -9px,   6px); }
+  70%  { transform: translateX(-50%) translate(  5px,  10px); }
+  100% { transform: translateX(-50%) translate(  0px,   0px); }
+}
+
+.light-beam {
+  animation: light-drift 8s ease-in-out infinite;
+}
+
+@keyframes ignite-rainbow {
+  0%   { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+
+.ignite-text {
+  background: linear-gradient(90deg, #ff6b6b, #ffb347, #ffd700, #90ee90, #87ceeb, #b39ddb, #ff6b6b);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: ignite-rainbow 4s linear infinite;
+  padding-bottom: 0.25em;
+  line-height: 1.15;
+}
+
+body {
+  font-family: var(--font-jakarta), sans-serif;
+  min-height: 100vh;
+  color: var(--ta);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
