@@ -7,6 +7,7 @@ import { useState } from "react";
 const NAV_LINKS = [
   { label: "Download",              href: "/download",  sub: null        },
   { label: "Ignite",                href: "/ignite",    sub: null        },
+  { label: "Features",              href: "/features",  sub: null        },
   { label: "Safety & Transparency", href: null,         sub: "safety"    },
   { label: "The Manifesto",         href: null,         sub: "manifesto" },
 ];
@@ -133,6 +134,29 @@ export default function Header() {
           ))}
         </nav>
 
+        {/* Start Web App — desktop only */}
+        <Link
+          href="https://app.reelms.io"
+          className="hidden lg:flex"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            background: "rgba(185, 152, 135, 0.07)",
+            border: "1px solid rgba(185, 152, 135, 0.2)",
+            borderRadius: "999px",
+            padding: "9px 20px",
+            textDecoration: "none",
+            transition: "all 0.2s",
+            whiteSpace: "nowrap",
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = "rgba(185,152,135,0.12)"; e.currentTarget.style.borderColor = "rgba(185,152,135,0.35)"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "rgba(185,152,135,0.07)"; e.currentTarget.style.borderColor = "rgba(185,152,135,0.2)"; }}
+        >
+          <span style={{ fontFamily: "var(--font-jakarta), sans-serif", fontSize: "13px", color: "#b99887", fontWeight: 500 }}>Start </span>
+          <span style={{ fontFamily: "var(--font-dela), sans-serif", fontSize: "14px", color: "#b99887", fontWeight: 400 }}>Web App</span>
+        </Link>
+
         {/* Hamburger — mobile/tablet only */}
         <button
           className="flex lg:hidden"
@@ -170,6 +194,25 @@ export default function Header() {
           className="lg:hidden"
           style={{ display: "flex", flexDirection: "column", gap: "20px", padding: "20px 24px 28px", position: "relative", zIndex: 50 }}
         >
+          <Link
+            href="https://app.reelms.io"
+            onClick={() => setOpen(false)}
+            style={{
+              ...linkStyle,
+              opacity: 0.7,
+              fontSize: "0.95rem",
+              border: "1.5px solid var(--ta)",
+              borderRadius: "999px",
+              padding: "8px 18px",
+              display: "inline-flex",
+              alignSelf: "flex-start",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
+            onMouseLeave={e => (e.currentTarget.style.opacity = "0.7")}
+          >
+            Start Web App
+          </Link>
+
           {NAV_LINKS.map(({ label, href, sub }) => (
             <div key={label}>
               {sub ? (
