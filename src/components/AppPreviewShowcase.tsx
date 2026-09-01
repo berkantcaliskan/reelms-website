@@ -17,7 +17,7 @@ export default function AppPreviewShowcase() {
         perspective: "1000px",
       }}
     >
-      {/* ── CARD 1: Reelm Community & Voice Channel (Top-Left Stack) ── */}
+      {/* ── CARD 1: Reelms Community & Voice Channel (Top-Left Stack) ── */}
       <div
         onMouseEnter={() => setHoveredCard(1)}
         onMouseLeave={() => setHoveredCard(null)}
@@ -57,16 +57,16 @@ export default function AppPreviewShowcase() {
             <span style={{ width: "9px", height: "9px", borderRadius: "50%", background: "#4ade80", opacity: 0.8 }} />
           </div>
           <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.72rem", color: "rgba(185, 152, 135, 0.65)", fontWeight: 700 }}>
-            Reelms Community
+            Reelms Space
           </span>
         </div>
 
-        {/* Community Cover Banner */}
+        {/* Community Cover Banner with Genuine Beige Cat Icon */}
         <div
           style={{
             height: "80px",
             borderRadius: "14px",
-            background: "linear-gradient(135deg, rgba(185, 152, 135, 0.4) 0%, rgba(65, 50, 54, 0.6) 100%)",
+            background: "linear-gradient(135deg, rgba(185, 152, 135, 0.35) 0%, rgba(65, 50, 54, 0.65) 100%)",
             border: "1px solid rgba(185, 152, 135, 0.2)",
             position: "relative",
             display: "flex",
@@ -77,27 +77,29 @@ export default function AppPreviewShowcase() {
             overflow: "hidden",
           }}
         >
+          {/* Authentic Beige Icon with Dark Cat Glyph */}
           <div
             style={{
-              width: "42px",
-              height: "42px",
+              width: "44px",
+              height: "44px",
               borderRadius: "12px",
               background: "#b99887",
+              border: "1.5px solid rgba(255, 255, 255, 0.3)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+              boxShadow: "0 4px 14px rgba(0, 0, 0, 0.35)",
               flexShrink: 0,
             }}
           >
-            <Image src="/reelms-logo.svg" alt="Reelms Logo" width={28} height={28} style={{ objectFit: "contain" }} />
+            <Image src="/reelms-logo.svg" alt="Reelms Logo" width={30} height={30} style={{ objectFit: "contain" }} />
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
             <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.98rem", fontWeight: 800, color: "#fff" }}>
-              Reelms Topluluğu
+              Reelms Community
             </span>
             <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.72rem", color: "rgba(255,255,255,0.75)" }}>
-              Ana Topluluk Odası • 1.4k üye
+              General Hub • 1.4k members
             </span>
           </div>
         </div>
@@ -118,11 +120,11 @@ export default function AppPreviewShowcase() {
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#68c586", boxShadow: "0 0 8px #68c586" }} />
             <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.76rem", fontWeight: 700, color: "#68c586" }}>
-              Canlı Ses Odası • Lounge
+              Live Voice • The Lounge
             </span>
           </div>
           <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.7rem", color: "rgba(104, 197, 134, 0.85)", fontWeight: 600 }}>
-            4 Kişi Yayında
+            4 Connected
           </span>
         </div>
 
@@ -137,7 +139,7 @@ export default function AppPreviewShowcase() {
               <span style={{ fontSize: "0.65rem", color: "rgba(185, 152, 135, 0.6)" }}>14:20</span>
             </div>
             <p style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(245, 230, 222, 0.85)", margin: 0, lineHeight: 1.3 }}>
-              Sakin ve samimi yeni alanımıza hoş geldiniz! 🌿
+              Welcome to our new quiet corner of the internet! 🌿
             </p>
           </div>
         </div>
@@ -240,7 +242,7 @@ export default function AppPreviewShowcase() {
         </div>
       </div>
 
-      {/* ── CARD 3: Dynamic Floating Hub & Clean DMs (Foreground Stack) ── */}
+      {/* ── CARD 3: Instant Screen Share & Squad Watch Party (Foreground Stack) ── */}
       <div
         onMouseEnter={() => setHoveredCard(3)}
         onMouseLeave={() => setHoveredCard(null)}
@@ -272,54 +274,64 @@ export default function AppPreviewShowcase() {
           userSelect: "none",
         }}
       >
-        {/* Dynamic Floating Bar Mockup Header */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
+        {/* Screen Share / Watch Party Header */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
           <div
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "6px",
-              background: "rgba(185, 152, 135, 0.12)",
-              border: "1px solid rgba(185, 152, 135, 0.25)",
+              background: "rgba(239, 68, 68, 0.12)",
+              border: "1px solid rgba(239, 68, 68, 0.3)",
               borderRadius: "999px",
               padding: "4px 10px",
             }}
           >
-            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#b99887" }} />
-            <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.72rem", fontWeight: 800, color: "#e0c9bc" }}>
-              Dynamic Bar Active
+            <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#ef4444", boxShadow: "0 0 8px #ef4444" }} />
+            <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.72rem", fontWeight: 800, color: "#fca5a5" }}>
+              Live Stream • 1080p 60FPS
             </span>
           </div>
           <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.7rem", color: "#68c586", fontWeight: 700 }}>
-            ● Real-time
+            ● 3 Watching
           </span>
         </div>
 
-        {/* Interactive Chat Snippet */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "12px" }}>
-          <div style={{ background: "rgba(185, 152, 135, 0.08)", border: "1px solid rgba(185, 152, 135, 0.14)", borderRadius: "12px", padding: "8px 12px" }}>
-            <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.76rem", color: "#f5e6de", lineHeight: 1.3 }}>
-              Web ve Desktop arasında kesintisiz, sıfır gecikme senkronizasyon. ⚡
-            </span>
+        {/* Live Stream Showcase Snippet */}
+        <div style={{
+          background: "linear-gradient(135deg, rgba(30, 24, 28, 0.8) 0%, rgba(20, 16, 18, 0.9) 100%)",
+          border: "1px solid rgba(185, 152, 135, 0.18)",
+          borderRadius: "12px",
+          padding: "10px 12px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: "10px",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <span style={{ fontSize: "1.2rem" }}>🎮</span>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.8rem", fontWeight: 800, color: "#fff" }}>
+                Ranked Squad Match
+              </span>
+              <span style={{ fontSize: "0.66rem", color: "rgba(185, 152, 135, 0.7)" }}>
+                Zero-lag screen co-watch active
+              </span>
+            </div>
           </div>
+          <span style={{ padding: "2px 8px", borderRadius: "999px", background: "rgba(104, 197, 134, 0.15)", color: "#86efac", fontSize: "0.68rem", fontWeight: 700 }}>
+            Watch ›
+          </span>
         </div>
 
-        {/* Input Bar Preview */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            background: "rgba(0, 0, 0, 0.4)",
-            border: "1px solid rgba(185, 152, 135, 0.2)",
-            borderRadius: "12px",
-            padding: "8px 12px",
-          }}
-        >
-          <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.74rem", color: "rgba(185, 152, 135, 0.5)" }}>
-            Bir mesaj yaz...
+        {/* Quick Chat Snippet */}
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", background: "rgba(0, 0, 0, 0.35)", border: "1px solid rgba(185, 152, 135, 0.16)", borderRadius: "10px", padding: "6px 10px" }}>
+          <div style={{ width: "20px", height: "20px", borderRadius: "50%", background: "#68c586", color: "#181416", fontSize: "0.65rem", fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            M
+          </div>
+          <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.72rem", color: "rgba(245, 230, 222, 0.9)" }}>
+            That clutch play in the final round was insane! 🔥
           </span>
-          <span style={{ fontSize: "0.85rem", color: "#b99887" }}>✨</span>
         </div>
       </div>
     </div>
