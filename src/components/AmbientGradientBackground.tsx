@@ -139,7 +139,7 @@ export default function AmbientGradientBackground() {
             pointerEvents: "none",
             backgroundImage: `url(${grainDataUrl})`,
             backgroundRepeat: "repeat",
-            opacity: 0.85,
+            opacity: 0.60,
             mixBlendMode: "screen",
           }}
         />
