@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const NAV_LINKS = [
   { label: "Download",              href: "/download",  sub: null        },
@@ -42,6 +43,17 @@ export default function Header() {
   const [openSub, setOpenSub] = useState<string | null>(null);
 
   const toggleSub = (key: string) => setOpenSub(prev => prev === key ? null : key);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <>
@@ -157,11 +169,11 @@ export default function Header() {
           <span style={{ fontFamily: "var(--font-dela), sans-serif", fontSize: "14px", color: "#b99887", fontWeight: 400 }}>Web App</span>
         </Link>
 
-        {/* Hamburger — mobile/tablet only */}
+        {/* Hamburger button — mobile/tablet only */}
         <button
           className="flex lg:hidden"
-          onClick={() => setOpen(v => !v)}
-          aria-label="Toggle menu"
+          onClick={() => setOpen(true)}
+          aria-label="Open menu"
           style={{ background: "none", border: "none", cursor: "pointer", flexDirection: "column", alignItems: "flex-end", gap: "5px", padding: "4px" }}
         >
           {[22, 15, 22].map((w, i) => (
@@ -174,112 +186,209 @@ export default function Header() {
                 borderRadius: "999px",
                 background: "var(--ta)",
                 transition: "all 0.25s",
-                opacity: i === 1 ? (open ? 0 : 0.65) : 1,
-                transform: open
-                  ? i === 0 ? "translateY(7px) rotate(45deg)"
-                  : i === 2 ? "translateY(-7px) rotate(-45deg)"
-                  : "none"
-                  : "none",
+                opacity: i === 1 ? 0.65 : 1,
               }}
             />
           ))}
         </button>
       </header>
 
-      <div style={{ height: "1cm" }} />
+      {/* Slide-in Mobile Menu Drawer */}
+      <AnimatePresence>
+        {open && (
+          <>
+            {/* Backdrop Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setOpen(false)}
+              style={{
+                position: "fixed",
+                inset: 0,
+                background: "rgba(8, 6, 8, 0.65)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+                zIndex: 998,
+              }}
+            />
 
-      {/* Mobile dropdown — outside header, starts right below it */}
-      {open && (
-        <nav
-          className="lg:hidden"
-          style={{ display: "flex", flexDirection: "column", gap: "20px", padding: "20px 24px 28px", position: "relative", zIndex: 50 }}
-        >
-          <Link
-            href="https://app.reelms.io"
-            onClick={() => setOpen(false)}
-            style={{
-              ...linkStyle,
-              opacity: 0.7,
-              fontSize: "0.95rem",
-              border: "1.5px solid var(--ta)",
-              borderRadius: "999px",
-              padding: "8px 18px",
-              display: "inline-flex",
-              alignSelf: "flex-start",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-            onMouseLeave={e => (e.currentTarget.style.opacity = "0.7")}
-          >
-            Start Web App
-          </Link>
+            {/* Slide-in Drawer from Right */}
+            <motion.aside
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 28, stiffness: 280 }}
+              style={{
+                position: "fixed",
+                top: 0,
+                right: 0,
+                bottom: 0,
+                width: "min(340px, 86vw)",
+                background: "rgba(24, 20, 22, 0.96)",
+                backdropFilter: "blur(32px)",
+                WebkitBackdropFilter: "blur(32px)",
+                borderLeft: "1px solid rgba(185, 152, 135, 0.18)",
+                boxShadow: "-16px 0 50px rgba(0, 0, 0, 0.6)",
+                zIndex: 999,
+                display: "flex",
+                flexDirection: "column",
+                padding: "24px 22px 32px",
+                overflowY: "auto",
+              }}
+            >
+              {/* Drawer Top Header */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "28px" }}>
+                <Link
+                  href="/"
+                  onClick={() => setOpen(false)}
+                  style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}
+                >
+                  <Image
+                    src="/reelms-logo.svg"
+                    alt="Reelms"
+                    width={36}
+                    height={36}
+                    style={{ objectFit: "contain" }}
+                  />
+                  <span style={{ fontFamily: "var(--font-dela), sans-serif", fontSize: "1.2rem", color: "var(--ta)" }}>
+                    Reelms
+                  </span>
+                </Link>
 
-          {NAV_LINKS.map(({ label, href, sub }) => (
-            <div key={label}>
-              {sub ? (
                 <button
-                  onClick={() => toggleSub(sub)}
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  aria-label="Close menu"
                   style={{
-                    ...linkStyle,
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    padding: 0,
-                    fontSize: "0.95rem",
-                    opacity: openSub === sub ? 1 : 0.7,
+                    background: "rgba(185, 152, 135, 0.08)",
+                    border: "1px solid rgba(185, 152, 135, 0.15)",
+                    borderRadius: "50%",
+                    width: "36px",
+                    height: "36px",
                     display: "flex",
                     alignItems: "center",
-                    gap: "6px",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    color: "var(--ta)",
+                    fontSize: "1.2rem",
+                    transition: "all 0.15s",
                   }}
+                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.18)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.08)"; }}
                 >
-                  {label}
-                  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transition: "transform 0.25s", transform: openSub === sub ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0 }}>
-                    <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  ✕
                 </button>
-              ) : (
-                <Link
-                  href={href!}
-                  onClick={() => setOpen(false)}
-                  style={{ ...linkStyle, opacity: 0.7, fontSize: "0.95rem" }}
-                  onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-                  onMouseLeave={e => (e.currentTarget.style.opacity = "0.7")}
-                >
-                  {label}
-                </Link>
-              )}
+              </div>
 
-              {/* Mobile submenu — paddingLeft trick so absolute numbers aren't clipped */}
-              {sub && (
-                <div style={{
-                  overflow: "hidden",
-                  maxHeight: openSub === sub ? "300px" : "0",
-                  transition: "max-height 0.3s ease",
-                  marginLeft: "-22px",
-                  paddingLeft: "22px",
-                }}>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "16px", paddingTop: "16px" }}>
-                    {SUB_LINKS[sub].map(({ label: sl, href: sh }, idx) => (
-                      <Link
-                        key={sh}
-                        href={sh}
-                        onClick={() => { setOpen(false); setOpenSub(null); }}
-                        style={{ ...linkStyle, fontSize: "0.85rem", opacity: 0.5, position: "relative" }}
-                        onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-                        onMouseLeave={e => (e.currentTarget.style.opacity = "0.5")}
+              {/* Start Web App CTA Button */}
+              <Link
+                href="https://app.reelms.io"
+                onClick={() => setOpen(false)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  background: "rgba(185, 152, 135, 0.12)",
+                  border: "1.5px solid rgba(185, 152, 135, 0.35)",
+                  borderRadius: "14px",
+                  padding: "12px 18px",
+                  textDecoration: "none",
+                  marginBottom: "26px",
+                  transition: "all 0.2s",
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.22)"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.12)"; }}
+              >
+                <span style={{ fontFamily: "var(--font-jakarta), sans-serif", fontSize: "14px", color: "#b99887", fontWeight: 600 }}>Start </span>
+                <span style={{ fontFamily: "var(--font-dela), sans-serif", fontSize: "15px", color: "#b99887", fontWeight: 400 }}>Web App ›</span>
+              </Link>
+
+              {/* Navigation Links */}
+              <nav style={{ display: "flex", flexDirection: "column", gap: "18px", flex: 1 }}>
+                {NAV_LINKS.map(({ label, href, sub }) => (
+                  <div key={label} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    {sub ? (
+                      <button
+                        type="button"
+                        onClick={() => toggleSub(sub)}
+                        style={{
+                          ...linkStyle,
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          padding: 0,
+                          fontSize: "0.95rem",
+                          opacity: openSub === sub ? 1 : 0.75,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          width: "100%",
+                          textAlign: "left",
+                        }}
                       >
-                        <span style={{ position: "absolute", right: "calc(100% + 4px)", top: "-1px", fontFamily: "var(--font-jakarta), sans-serif", fontSize: "0.55rem", opacity: 0.6, lineHeight: 1 }}>
-                          {String(idx + 1).padStart(2, "0")}
-                        </span>
-                        {sl}
+                        <span>{label}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transition: "transform 0.25s", transform: openSub === sub ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0 }}>
+                          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </button>
+                    ) : (
+                      <Link
+                        href={href!}
+                        onClick={() => setOpen(false)}
+                        style={{ ...linkStyle, opacity: 0.75, fontSize: "0.95rem" }}
+                        onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
+                        onMouseLeave={e => (e.currentTarget.style.opacity = "0.75")}
+                      >
+                        {label}
                       </Link>
-                    ))}
+                    )}
+
+                    {/* Submenu Accordion */}
+                    {sub && (
+                      <div
+                        style={{
+                          overflow: "hidden",
+                          maxHeight: openSub === sub ? "280px" : "0",
+                          transition: "max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                          paddingLeft: "12px",
+                        }}
+                      >
+                        <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingTop: "10px", paddingBottom: "6px" }}>
+                          {SUB_LINKS[sub].map(({ label: sl, href: sh }, idx) => (
+                            <Link
+                              key={sh}
+                              href={sh}
+                              onClick={() => { setOpen(false); setOpenSub(null); }}
+                              style={{
+                                ...linkStyle,
+                                fontSize: "0.82rem",
+                                opacity: 0.55,
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "8px",
+                              }}
+                              onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
+                              onMouseLeave={e => (e.currentTarget.style.opacity = "0.55")}
+                            >
+                              <span style={{ fontFamily: "var(--font-jakarta), sans-serif", fontSize: "0.65rem", opacity: 0.6 }}>
+                                {String(idx + 1).padStart(2, "0")}.
+                              </span>
+                              <span>{sl}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
-        </nav>
-      )}
+                ))}
+              </nav>
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }
