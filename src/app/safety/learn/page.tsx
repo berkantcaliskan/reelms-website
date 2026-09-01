@@ -451,5 +451,6 @@ export default function LearnPage() {
 
       <Footer />
     </div>
-  );
+  </div>
+);
 }
