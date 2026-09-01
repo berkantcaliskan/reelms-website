@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import CatParticles from "@/components/CatParticles";
 import AppPreviewShowcase from "@/components/AppPreviewShowcase";
 import AmbientGradientBackground from "@/components/AmbientGradientBackground";
+import FeaturesSections from "@/components/FeaturesSections";
+import Footer from "@/components/Footer";
 
 export default function Beginning() {
   return (
@@ -151,6 +153,12 @@ export default function Beginning() {
             </div>
           </div>
         </main>
+
+        {/* Feature Highlights & Bento Sections */}
+        <FeaturesSections />
+
+        {/* Website Footer */}
+        <Footer />
       </div>
     </div>
   );
