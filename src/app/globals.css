@@ -39,6 +39,52 @@
   animation: reelms-mesh-flow 24s ease-in-out infinite alternate;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--ta-rgb), 0.15) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(var(--ta-rgb), 0.18);
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  background-clip: content-box;
+}
+
+@keyframes p-in {
+  from { opacity: 0; }
+  to   { opacity: 0.065; }
+}
+
+@keyframes p-out {
+  from { opacity: 0.065; }
+  to   { opacity: 0; }
+}
+
+@keyframes light-drift {
+  0%   { transform: translateX(-50%) translate(0px, 0px); }
+  20%  { transform: translateX(-50%) translate(7px, -9px); }
+  45%  { transform: translateX(-50%) translate(-9px, 6px); }
+  70%  { transform: translateX(-50%) translate(5px, 10px); }
+  100% { transform: translateX(-50%) translate(0px, 0px); }
+}
+
+.light-beam {
+  animation: light-drift 8s ease-in-out infinite;
+  opacity: 0.55;
+}
+
 body {
   font-family: var(--font-jakarta), sans-serif;
   min-height: 100vh;
