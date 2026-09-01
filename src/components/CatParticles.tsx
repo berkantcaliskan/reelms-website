@@ -17,6 +17,10 @@ const MIN_DIST      = 10;
 const SWAP_INTERVAL = 1560;
 const FADE_MS       = 2000;
 
+function rand(a: number, b: number) {
+  return a + Math.random() * (b - a);
+}
+
 function isForbiddenZone(x: number, y: number): boolean {
   // 1. Top header, logo, nav bar and dropdown menus
   if (y < 20) return true;
