@@ -1,6 +1,32 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 export default function AmbientGradientBackground() {
+  const [grainDataUrl, setGrainDataUrl] = useState<string>("");
+
+  useEffect(() => {
+    // Generate fine-grain 1:1 pixel monochromatic noise canvas
+    const canvas = document.createElement("canvas");
+    canvas.width = 160;
+    canvas.height = 160;
+    const ctx = canvas.getContext("2d");
+    if (ctx) {
+      const imgData = ctx.createImageData(160, 160);
+      const data = imgData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        // High quality fine grain distribution
+        const noise = Math.floor(Math.random() * 255);
+        data[i] = noise;     // R
+        data[i + 1] = noise; // G
+        data[i + 2] = noise; // B
+        data[i + 3] = Math.random() > 0.4 ? Math.floor(Math.random() * 45) + 15 : 0; // Alpha
+      }
+      ctx.putImageData(imgData, 0, 0);
+      setGrainDataUrl(canvas.toDataURL("image/png"));
+    }
+  }, []);
+
   return (
     <div
       style={{
@@ -101,30 +127,23 @@ export default function AmbientGradientBackground() {
         }}
       />
 
-      {/* ── Layer 3: Film Grain Noise Texture (1:1 Pixel Sharp Vector Filter) ── */}
-      <svg
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          opacity: 0.16,
-          mixBlendMode: "overlay",
-          pointerEvents: "none",
-        }}
-      >
-        <filter id="reelms-grain-sharp">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="1.15"
-            numOctaves="3"
-            stitchTiles="stitch"
-          />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#reelms-grain-sharp)" />
-      </svg>
+      {/* ── Layer 3: Direct Pixel-Level Micro Film Grain (Guaranteed Visibility & Ultra-Fine) ── */}
+      {grainDataUrl && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            pointerEvents: "none",
+            backgroundImage: `url(${grainDataUrl})`,
+            backgroundRepeat: "repeat",
+            opacity: 0.85,
+            mixBlendMode: "screen",
+          }}
+        />
+      )}
     </div>
   );
 }
