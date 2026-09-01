@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import AmbientGradientBackground from "@/components/AmbientGradientBackground";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import Image from "next/image";
+import RealFireCanvas from "@/components/RealFireCanvas";
+import FallingPerksShowcase from "@/components/FallingPerksShowcase";
 
 type BillingPeriod = "monthly" | "yearly";
 type MobileComparePair = "free-ignite" | "ignite-all" | "free-all";
@@ -23,7 +24,7 @@ interface ComparisonCategory {
   rows: ComparisonRow[];
 }
 
-// Clean SVG Icons to replace all emojis
+// Clean SVG Icons
 const FlameIcon = ({ size = 16, color = "#ff7a45" }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
     <path
@@ -268,7 +269,7 @@ export default function IgnitePage() {
           }}
         >
           {/* ══════════════════════════════════════════════════════════
-              HERO SECTION: 2-COLUMN GRID (LEFT FLAME + RIGHT GRAPHIC)
+              HERO SECTION: 2-COLUMN GRID (REAL FIRE + FALLING PERKS)
           ══════════════════════════════════════════════════════════ */}
           <section
             style={{
@@ -280,7 +281,7 @@ export default function IgnitePage() {
               marginBottom: "clamp(60px, 8vh, 100px)",
             }}
           >
-            {/* ── Left Column: Reelms / Ignite / and Ignite All with Full Fire Flame ── */}
+            {/* ── Left Column: Reelms / Ignite / and Ignite All with Real Fire Flame Canvas ── */}
             <div style={{ display: "flex", flexDirection: "column", gap: "22px", textAlign: "left" }}>
               {/* Eyebrow badge */}
               <div
@@ -310,15 +311,13 @@ export default function IgnitePage() {
                 </span>
               </div>
 
-              {/* Title with Full-Width Fire Flame Animation Behind */}
+              {/* Title with REAL Dynamic Particle Fire Simulation Burning Behind */}
               <div style={{ position: "relative", display: "inline-block", width: "fit-content" }}>
-                {/* Full-width burning flame layers */}
-                <div className="ignite-flame-wrapper" aria-hidden="true">
-                  <div className="ignite-flame-layer-1" />
-                  <div className="ignite-flame-layer-2" />
-                </div>
+                {/* 60fps Real Fire Physics Particle Canvas */}
+                <RealFireCanvas width={520} height={220} />
 
-                <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column" }}>
+                {/* Text Content overlaying the flame */}
+                <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column" }}>
                   <span
                     style={{
                       fontFamily: "var(--font-karla), 'Karla', sans-serif",
@@ -349,6 +348,7 @@ export default function IgnitePage() {
                     IGNITE
                   </h1>
 
+                  {/* and Ignite All — Fiery Gradient Harmony */}
                   <span
                     style={{
                       fontFamily: "var(--font-karla), 'Karla', sans-serif",
@@ -356,7 +356,10 @@ export default function IgnitePage() {
                       fontWeight: 800,
                       lineHeight: 1.1,
                       letterSpacing: "-0.03em",
-                      color: "#ffffff",
+                      background: "linear-gradient(90deg, #ffd4be 0%, #ff8b60 50%, #ff5230 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
                       marginTop: "6px",
                       textShadow: "0 4px 24px rgba(0, 0, 0, 0.7)",
                     }}
@@ -444,162 +447,8 @@ export default function IgnitePage() {
               </div>
             </div>
 
-            {/* ── Right Column: Rich Visual Graphic Showcase ── */}
-            <div
-              style={{
-                position: "relative",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-              }}
-            >
-              {/* Radial Ember Aura */}
-              <div
-                style={{
-                  position: "absolute",
-                  width: "100%",
-                  height: "100%",
-                  maxWidth: "420px",
-                  maxHeight: "420px",
-                  borderRadius: "50%",
-                  background: "radial-gradient(circle, rgba(255, 107, 74, 0.4) 0%, rgba(226, 138, 82, 0.2) 50%, transparent 75%)",
-                  filter: "blur(50px)",
-                  zIndex: 0,
-                }}
-              />
-
-              {/* Main Holographic Showcase Card */}
-              <div
-                style={{
-                  position: "relative",
-                  zIndex: 1,
-                  width: "100%",
-                  maxWidth: "440px",
-                  background: "linear-gradient(145deg, rgba(38, 28, 32, 0.95) 0%, rgba(20, 16, 18, 0.98) 100%)",
-                  border: "1.5px solid rgba(255, 122, 69, 0.4)",
-                  borderRadius: "28px",
-                  padding: "26px 24px",
-                  backdropFilter: "blur(32px)",
-                  WebkitBackdropFilter: "blur(32px)",
-                  boxShadow: "0 28px 70px rgba(0, 0, 0, 0.7), 0 0 45px rgba(255, 107, 74, 0.18)",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "18px",
-                }}
-              >
-                {/* Header in Card */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                    <div
-                      style={{
-                        width: "44px",
-                        height: "44px",
-                        borderRadius: "14px",
-                        background: "#b99887",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexShrink: 0,
-                        boxShadow: "0 4px 16px rgba(185, 152, 135, 0.4)",
-                      }}
-                    >
-                      <Image src="/reelms-logo.svg" alt="Reelms" width={28} height={28} style={{ objectFit: "contain" }} />
-                    </div>
-                    <div>
-                      <h3 style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.05rem", fontWeight: 800, color: "#ffffff", margin: 0 }}>
-                        Reelms Community
-                      </h3>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.75rem", color: "#ff8b60", fontWeight: 700, display: "flex", alignItems: "center", gap: "4px" }}>
-                        <FlameIcon size={12} color="#ff8b60" /> Ignited Level 3 • Syndicate Tier
-                      </span>
-                    </div>
-                  </div>
-
-                  <span style={{ fontSize: "0.7rem", fontWeight: 800, padding: "4px 10px", borderRadius: "999px", background: "rgba(104, 197, 134, 0.2)", color: "#86efac", border: "1px solid rgba(104, 197, 134, 0.4)" }}>
-                    4K LIVE
-                  </span>
-                </div>
-
-                {/* Server Boost Gauge Bar */}
-                <div style={{ background: "rgba(185, 152, 135, 0.08)", borderRadius: "14px", padding: "14px", border: "1px solid rgba(185, 152, 135, 0.18)" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px" }}>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.76rem", color: "rgba(255, 255, 255, 0.8)", fontWeight: 700 }}>
-                      Ignition Progress
-                    </span>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.76rem", color: "#ff8b60", fontWeight: 800 }}>
-                      14 / 14 Boosts Unlocked
-                    </span>
-                  </div>
-                  <div style={{ width: "100%", height: "8px", background: "rgba(255, 255, 255, 0.12)", borderRadius: "999px", overflow: "hidden" }}>
-                    <div style={{ width: "100%", height: "100%", background: "linear-gradient(90deg, #ff7a45 0%, #e28a52 50%, #68c586 100%)", borderRadius: "999px" }} />
-                  </div>
-                </div>
-
-                {/* Live Stream / Watch Party Preview Frame */}
-                <div
-                  style={{
-                    background: "rgba(14, 11, 13, 0.85)",
-                    border: "1px solid rgba(185, 152, 135, 0.2)",
-                    borderRadius: "16px",
-                    padding: "12px 14px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                    <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#68c586", boxShadow: "0 0 8px #68c586" }} />
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", fontWeight: 800, color: "#ffffff" }}>
-                        4K 60FPS Watch Party
-                      </span>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.7rem", color: "rgba(255, 255, 255, 0.6)" }}>
-                        Zero-lag spatial audio • 18 squad members
-                      </span>
-                    </div>
-                  </div>
-                  <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.7rem", fontWeight: 800, color: "#b99887" }}>
-                    LIVE
-                  </span>
-                </div>
-
-                {/* Unlocked Badges 2x2 Showcase */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.16)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <AudioIcon size={18} color="#ff8b60" />
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", fontWeight: 800, color: "#ffffff" }}>Spatial 3D</span>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.6)" }}>Positional Audio</span>
-                    </div>
-                  </div>
-
-                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.16)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <SparkIcon size={18} color="#ffd4be" />
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", fontWeight: 800, color: "#ffffff" }}>4 GB Files</span>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.6)" }}>Lossless Media</span>
-                    </div>
-                  </div>
-
-                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.16)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <CrownIcon size={18} color="#b99887" />
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", fontWeight: 800, color: "#ffffff" }}>Video Avatars</span>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.6)" }}>Animated Identity</span>
-                    </div>
-                  </div>
-
-                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.16)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <ShieldIcon size={18} color="#68c586" />
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", fontWeight: 800, color: "#ffffff" }}>Auto Webhooks</span>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.6)" }}>Trigger-to-Action</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* ── Right Column: Playful Falling & Floating Perks Showcase ── */}
+            <FallingPerksShowcase />
           </section>
 
           {/* ══════════════════════════════════════════════════════════
