@@ -5,14 +5,13 @@ import Header from "@/components/Header";
 import AmbientGradientBackground from "@/components/AmbientGradientBackground";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 type BillingPeriod = "monthly" | "yearly";
 type MobileComparePair = "free-ignite" | "ignite-all" | "free-all";
 
 interface ComparisonRow {
   name: string;
-  tooltip?: string;
   free: string | boolean;
   ignite: string | boolean;
   igniteAll: string | boolean;
@@ -20,12 +19,66 @@ interface ComparisonRow {
 
 interface ComparisonCategory {
   category: string;
+  icon: React.ReactNode;
   rows: ComparisonRow[];
 }
 
+// Clean SVG Icons to replace all emojis
+const FlameIcon = ({ size = 16, color = "#ff7a45" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+    <path
+      d="M12 2c-.5 2-2 3.5-3.5 5.5C7 9.5 6 12 6 14.5 6 18.1 8.9 21 12.5 21s6.5-2.9 6.5-6.5c0-4-3-7-4.5-9-.5 2-1.5 3-2.5 3.5C12 7.5 12 4.5 12 2z"
+      fill={color}
+    />
+  </svg>
+);
+
+const SparkIcon = ({ size = 16, color = "#b99887" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+    <path
+      d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"
+      fill={color}
+    />
+  </svg>
+);
+
+const ShieldIcon = ({ size = 16, color = "#68c586" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+    <path
+      d="M12 2L4 5v6.5C4 16.8 7.4 21.6 12 23c4.6-1.4 8-6.2 8-11.5V5l-8-3z"
+      fill={color}
+      opacity="0.85"
+    />
+  </svg>
+);
+
+const AudioIcon = ({ size = 16, color = "#ff8b60" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+    <path d="M12 3v18M8 6v12M4 9v6M16 6v12M20 9v6" stroke={color} strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
+const CrownIcon = ({ size = 16, color = "#ffd4be" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+    <path d="M3 18h18v2H3v-2zm1-3l2.5-9 5.5 5 5.5-5L20 15H4z" fill={color} />
+  </svg>
+);
+
+const BrainIcon = ({ size = 16, color = "#86efac" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+    <path
+      d="M9.5 2A4.5 4.5 0 005 6.5c0 .77.19 1.5.53 2.14A4 4 0 004 12a4 4 0 002.08 3.5A4.5 4.5 0 0010 20h.5M14.5 2A4.5 4.5 0 0119 6.5c0 .77-.19 1.5-.53 2.14A4 4 0 0120 12a4 4 0 01-2.08 3.5A4.5 4.5 0 0114 20h-.5M12 2v18"
+      stroke={color}
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
 const COMPARISON_DATA: ComparisonCategory[] = [
   {
-    category: "⚡ Capacity & Scale",
+    category: "Capacity & Scale",
+    icon: <SparkIcon size={18} color="#ffd4be" />,
     rows: [
       {
         name: "Member Capacity per Reelm",
@@ -54,7 +107,8 @@ const COMPARISON_DATA: ComparisonCategory[] = [
     ],
   },
   {
-    category: "🎙️ Streaming & Audio Quality",
+    category: "Streaming & Audio Quality",
+    icon: <AudioIcon size={18} color="#ff8b60" />,
     rows: [
       {
         name: "Screen Share & Live Broadcast",
@@ -77,7 +131,8 @@ const COMPARISON_DATA: ComparisonCategory[] = [
     ],
   },
   {
-    category: "🚀 Server Ignition (Boosts)",
+    category: "Server Ignition (Boosts)",
+    icon: <FlameIcon size={18} color="#ff7a45" />,
     rows: [
       {
         name: "Included Server Boosts",
@@ -88,7 +143,8 @@ const COMPARISON_DATA: ComparisonCategory[] = [
     ],
   },
   {
-    category: "✨ Profile Cosmetics & Identity",
+    category: "Profile Cosmetics & Identity",
+    icon: <CrownIcon size={18} color="#b99887" />,
     rows: [
       {
         name: "Avatar & Banner Media",
@@ -99,8 +155,8 @@ const COMPARISON_DATA: ComparisonCategory[] = [
       {
         name: "Animated Profile Greetings",
         free: false,
-        ignite: "✓ Custom Animations & Emojis",
-        igniteAll: "✓ Custom Animations & Emojis",
+        ignite: "✓ Custom Animations & Effects",
+        igniteAll: "✓ Custom Animations & Effects",
       },
       {
         name: "Custom Profile Themes",
@@ -117,7 +173,8 @@ const COMPARISON_DATA: ComparisonCategory[] = [
     ],
   },
   {
-    category: "👑 Community & Syndicate Tools",
+    category: "Community & Syndicate Tools",
+    icon: <ShieldIcon size={18} color="#68c586" />,
     rows: [
       {
         name: "Custom Server Roles",
@@ -158,11 +215,12 @@ const COMPARISON_DATA: ComparisonCategory[] = [
     ],
   },
   {
-    category: "🧠 Intelligence",
+    category: "Reelms Intelligence",
+    icon: <BrainIcon size={18} color="#86efac" />,
     rows: [
       {
         name: "Reelms Intelligence AI Access",
-        free: "Standard Access",
+        free: "Standard Access to Reelms Intelligence",
         ignite: "Full Priority High-Speed Access",
         igniteAll: "Full Priority High-Speed Access",
       },
@@ -201,7 +259,7 @@ export default function IgnitePage() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            padding: "clamp(36px, 6vh, 72px) clamp(18px, 4vw, 48px) clamp(60px, 8vh, 100px)",
+            padding: "clamp(36px, 6vh, 64px) clamp(20px, 4vw, 56px) clamp(60px, 8vh, 100px)",
             position: "relative",
             zIndex: 10,
             maxWidth: "1280px",
@@ -210,34 +268,34 @@ export default function IgnitePage() {
           }}
         >
           {/* ══════════════════════════════════════════════════════════
-              HERO SECTION: LEFT COPY & FLAME + RIGHT GRAPHIC
+              HERO SECTION: 2-COLUMN GRID (LEFT FLAME + RIGHT GRAPHIC)
           ══════════════════════════════════════════════════════════ */}
           <section
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 460px), 1fr))",
-              gap: "clamp(40px, 6vw, 80px)",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 480px), 1fr))",
+              gap: "clamp(36px, 5vw, 64px)",
               alignItems: "center",
               width: "100%",
-              marginBottom: "clamp(56px, 8vh, 96px)",
+              marginBottom: "clamp(60px, 8vh, 100px)",
             }}
           >
-            {/* Left: Reelms / Ignite / and Ignite All with Flame Aura */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "24px", textAlign: "left" }}>
+            {/* ── Left Column: Reelms / Ignite / and Ignite All with Full Fire Flame ── */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "22px", textAlign: "left" }}>
               {/* Eyebrow badge */}
               <div
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "8px",
-                  background: "rgba(255, 107, 74, 0.12)",
-                  border: "1px solid rgba(255, 107, 74, 0.3)",
+                  background: "rgba(255, 122, 69, 0.12)",
+                  border: "1px solid rgba(255, 122, 69, 0.35)",
                   borderRadius: "999px",
                   padding: "5px 14px",
                   alignSelf: "flex-start",
                 }}
               >
-                <span style={{ fontSize: "14px" }}>🔥</span>
+                <FlameIcon size={14} color="#ff7a45" />
                 <span
                   style={{
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
@@ -252,16 +310,19 @@ export default function IgnitePage() {
                 </span>
               </div>
 
-              {/* Title with Fiery Flame Background Glow */}
-              <div style={{ position: "relative", display: "inline-block" }}>
-                {/* Organic Flame Aura Backdrop */}
-                <div className="ignite-flame-aura" />
+              {/* Title with Full-Width Fire Flame Animation Behind */}
+              <div style={{ position: "relative", display: "inline-block", width: "fit-content" }}>
+                {/* Full-width burning flame layers */}
+                <div className="ignite-flame-wrapper" aria-hidden="true">
+                  <div className="ignite-flame-layer-1" />
+                  <div className="ignite-flame-layer-2" />
+                </div>
 
                 <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column" }}>
                   <span
                     style={{
                       fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                      fontSize: "clamp(18px, 2.5vw, 24px)",
+                      fontSize: "clamp(18px, 2.4vw, 24px)",
                       fontWeight: 800,
                       letterSpacing: "0.15em",
                       textTransform: "uppercase",
@@ -272,31 +333,32 @@ export default function IgnitePage() {
                     Reelms
                   </span>
 
+                  {/* Ignite — Silky Smooth Flowing Gradient */}
                   <h1
-                    className="ignite-animated-title"
+                    className="ignite-flowing-gradient"
                     style={{
                       fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                      fontSize: "clamp(46px, 7.5vw, 84px)",
+                      fontSize: "clamp(48px, 8vw, 88px)",
                       fontWeight: 800,
-                      lineHeight: 0.96,
+                      lineHeight: 0.94,
                       letterSpacing: "-0.04em",
                       textTransform: "uppercase",
                       margin: 0,
                     }}
                   >
-                    Ignite
+                    IGNITE
                   </h1>
 
                   <span
                     style={{
                       fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                      fontSize: "clamp(26px, 4.5vw, 50px)",
+                      fontSize: "clamp(26px, 4.5vw, 48px)",
                       fontWeight: 800,
                       lineHeight: 1.1,
                       letterSpacing: "-0.03em",
-                      color: "#f5e6de",
+                      color: "#ffffff",
                       marginTop: "6px",
-                      textShadow: "0 4px 20px rgba(0, 0, 0, 0.6)",
+                      textShadow: "0 4px 24px rgba(0, 0, 0, 0.7)",
                     }}
                   >
                     and Ignite All.
@@ -305,59 +367,59 @@ export default function IgnitePage() {
               </div>
 
               {/* Tier Introductions Overview */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px", marginTop: "8px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "14px", marginTop: "6px" }}>
                 {/* Ignite Overview */}
                 <div
                   style={{
-                    background: "rgba(32, 25, 29, 0.65)",
-                    border: "1px solid rgba(185, 152, 135, 0.2)",
+                    background: "rgba(32, 25, 29, 0.75)",
+                    border: "1px solid rgba(185, 152, 135, 0.25)",
                     borderRadius: "16px",
                     padding: "16px 20px",
-                    backdropFilter: "blur(16px)",
+                    backdropFilter: "blur(18px)",
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
-                    <span style={{ fontSize: "16px" }}>⚡</span>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1rem", fontWeight: 800, color: "#fff" }}>
+                    <SparkIcon size={16} color="#b99887" />
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1rem", fontWeight: 800, color: "#ffffff" }}>
                       Reelms Ignite
                     </span>
                     <span style={{ fontSize: "0.7rem", fontWeight: 800, padding: "2px 8px", borderRadius: "999px", background: "rgba(185, 152, 135, 0.15)", color: "#b99887" }}>
                       Monthly / Annual
                     </span>
                   </div>
-                  <p style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.86rem", color: "rgba(255, 255, 255, 0.78)", lineHeight: 1.5, margin: 0 }}>
-                    Unlocks full personal premium power, 4K screen streaming, 2GB uploads, and includes <strong style={{ color: "#f5e6de" }}>1 One-Time Server Ignition (Boost)</strong> for your favorite community.
+                  <p style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.86rem", color: "rgba(255, 255, 255, 0.8)", lineHeight: 1.5, margin: 0 }}>
+                    Unlocks full personal premium perks, 4K screen streaming, 2GB uploads, and includes <strong style={{ color: "#ffffff" }}>1 One-Time Server Ignition (Boost)</strong> for your favorite community.
                   </p>
                 </div>
 
                 {/* Ignite All Overview */}
                 <div
                   style={{
-                    background: "linear-gradient(135deg, rgba(42, 28, 25, 0.75) 0%, rgba(24, 20, 22, 0.75) 100%)",
-                    border: "1.5px solid rgba(255, 107, 74, 0.4)",
+                    background: "linear-gradient(135deg, rgba(48, 28, 25, 0.85) 0%, rgba(26, 20, 22, 0.85) 100%)",
+                    border: "1.5px solid rgba(255, 122, 69, 0.45)",
                     borderRadius: "16px",
                     padding: "16px 20px",
-                    backdropFilter: "blur(16px)",
-                    boxShadow: "0 8px 30px rgba(255, 107, 74, 0.12)",
+                    backdropFilter: "blur(18px)",
+                    boxShadow: "0 8px 30px rgba(255, 107, 74, 0.15)",
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
-                    <span style={{ fontSize: "16px" }}>🔥</span>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1rem", fontWeight: 800, color: "#fff" }}>
+                    <FlameIcon size={16} color="#ff7a45" />
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1rem", fontWeight: 800, color: "#ffffff" }}>
                       Reelms Ignite All
                     </span>
-                    <span style={{ fontSize: "0.7rem", fontWeight: 800, padding: "2px 8px", borderRadius: "999px", background: "rgba(255, 107, 74, 0.2)", color: "#ff8b60" }}>
+                    <span style={{ fontSize: "0.7rem", fontWeight: 800, padding: "2px 8px", borderRadius: "999px", background: "rgba(255, 107, 74, 0.25)", color: "#ff8b60" }}>
                       Ultimate Tier
                     </span>
                   </div>
-                  <p style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.86rem", color: "rgba(255, 255, 255, 0.85)", lineHeight: 1.5, margin: 0 }}>
-                    The all-inclusive package with 4GB uploads, unlimited groups, plus <strong style={{ color: "#86efac" }}>1 Recurring Server Boost every month</strong> AND <strong style={{ color: "#ff8b60" }}>1 bonus one-time Boost</strong> with no extra fees.
+                  <p style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.86rem", color: "rgba(255, 255, 255, 0.88)", lineHeight: 1.5, margin: 0 }}>
+                    The all-inclusive power package with 4GB uploads, unlimited groups, plus <strong style={{ color: "#86efac" }}>1 Recurring Server Boost every month</strong> AND <strong style={{ color: "#ff8b60" }}>1 bonus one-time Boost</strong> with no recurring extra fees.
                   </p>
                 </div>
               </div>
 
-              {/* CTA jump button */}
-              <div style={{ display: "flex", gap: "12px", marginTop: "6px" }}>
+              {/* Jump button */}
+              <div style={{ display: "flex", gap: "12px", marginTop: "4px" }}>
                 <a
                   href="#compare-table"
                   style={{
@@ -382,43 +444,45 @@ export default function IgnitePage() {
               </div>
             </div>
 
-            {/* Right: Custom Aesthetic Holographic Ignite Visual Showcase */}
+            {/* ── Right Column: Rich Visual Graphic Showcase ── */}
             <div
               style={{
                 position: "relative",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "20px",
+                width: "100%",
               }}
             >
-              {/* Floating Ambient Glow */}
+              {/* Radial Ember Aura */}
               <div
                 style={{
                   position: "absolute",
-                  width: "360px",
-                  height: "360px",
+                  width: "100%",
+                  height: "100%",
+                  maxWidth: "420px",
+                  maxHeight: "420px",
                   borderRadius: "50%",
-                  background: "radial-gradient(circle, rgba(255, 107, 74, 0.35) 0%, rgba(226, 138, 82, 0.2) 45%, transparent 70%)",
-                  filter: "blur(60px)",
+                  background: "radial-gradient(circle, rgba(255, 107, 74, 0.4) 0%, rgba(226, 138, 82, 0.2) 50%, transparent 75%)",
+                  filter: "blur(50px)",
                   zIndex: 0,
                 }}
               />
 
-              {/* Main Visual Showcase Card */}
+              {/* Main Holographic Showcase Card */}
               <div
                 style={{
                   position: "relative",
                   zIndex: 1,
                   width: "100%",
-                  maxWidth: "420px",
-                  background: "linear-gradient(145deg, rgba(36, 26, 29, 0.92) 0%, rgba(20, 16, 18, 0.95) 100%)",
-                  border: "1.5px solid rgba(255, 107, 74, 0.35)",
+                  maxWidth: "440px",
+                  background: "linear-gradient(145deg, rgba(38, 28, 32, 0.95) 0%, rgba(20, 16, 18, 0.98) 100%)",
+                  border: "1.5px solid rgba(255, 122, 69, 0.4)",
                   borderRadius: "28px",
-                  padding: "28px 24px",
+                  padding: "26px 24px",
                   backdropFilter: "blur(32px)",
                   WebkitBackdropFilter: "blur(32px)",
-                  boxShadow: "0 24px 60px rgba(0, 0, 0, 0.65), 0 0 40px rgba(255, 107, 74, 0.15)",
+                  boxShadow: "0 28px 70px rgba(0, 0, 0, 0.7), 0 0 45px rgba(255, 107, 74, 0.18)",
                   display: "flex",
                   flexDirection: "column",
                   gap: "18px",
@@ -426,82 +490,111 @@ export default function IgnitePage() {
               >
                 {/* Header in Card */}
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                     <div
                       style={{
-                        width: "38px",
-                        height: "38px",
-                        borderRadius: "12px",
-                        background: "linear-gradient(135deg, #ff6b4a 0%, #e28a52 100%)",
+                        width: "44px",
+                        height: "44px",
+                        borderRadius: "14px",
+                        background: "#b99887",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontSize: "18px",
+                        flexShrink: 0,
+                        boxShadow: "0 4px 16px rgba(185, 152, 135, 0.4)",
                       }}
                     >
-                      🔥
+                      <Image src="/reelms-logo.svg" alt="Reelms" width={28} height={28} style={{ objectFit: "contain" }} />
                     </div>
                     <div>
-                      <h2 style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.1rem", fontWeight: 800, color: "#fff", margin: 0 }}>
-                        Reelms Syndicate
-                      </h2>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.74rem", color: "#ff8b60", fontWeight: 700 }}>
-                        Ignited Level 3 • Max Power
+                      <h3 style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.05rem", fontWeight: 800, color: "#ffffff", margin: 0 }}>
+                        Reelms Community
+                      </h3>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.75rem", color: "#ff8b60", fontWeight: 700, display: "flex", alignItems: "center", gap: "4px" }}>
+                        <FlameIcon size={12} color="#ff8b60" /> Ignited Level 3 • Syndicate Tier
                       </span>
                     </div>
                   </div>
 
-                  <span style={{ fontSize: "0.68rem", fontWeight: 800, padding: "4px 10px", borderRadius: "999px", background: "rgba(104, 197, 134, 0.2)", color: "#86efac", border: "1px solid rgba(104, 197, 134, 0.4)" }}>
+                  <span style={{ fontSize: "0.7rem", fontWeight: 800, padding: "4px 10px", borderRadius: "999px", background: "rgba(104, 197, 134, 0.2)", color: "#86efac", border: "1px solid rgba(104, 197, 134, 0.4)" }}>
                     4K LIVE
                   </span>
                 </div>
 
-                {/* Boost Gauge Bar */}
-                <div style={{ background: "rgba(185, 152, 135, 0.08)", borderRadius: "14px", padding: "14px", border: "1px solid rgba(185, 152, 135, 0.15)" }}>
+                {/* Server Boost Gauge Bar */}
+                <div style={{ background: "rgba(185, 152, 135, 0.08)", borderRadius: "14px", padding: "14px", border: "1px solid rgba(185, 152, 135, 0.18)" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px" }}>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.75rem", color: "rgba(255, 255, 255, 0.7)", fontWeight: 700 }}>
-                      Community Ignition Progress
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.76rem", color: "rgba(255, 255, 255, 0.8)", fontWeight: 700 }}>
+                      Ignition Progress
                     </span>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.75rem", color: "#ff8b60", fontWeight: 800 }}>
-                      14 / 14 Boosts Active
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.76rem", color: "#ff8b60", fontWeight: 800 }}>
+                      14 / 14 Boosts Unlocked
                     </span>
                   </div>
-                  <div style={{ width: "100%", height: "8px", background: "rgba(255, 255, 255, 0.1)", borderRadius: "999px", overflow: "hidden" }}>
-                    <div style={{ width: "100%", height: "100%", background: "linear-gradient(90deg, #ff6b4a 0%, #e28a52 50%, #68c586 100%)", borderRadius: "999px" }} />
+                  <div style={{ width: "100%", height: "8px", background: "rgba(255, 255, 255, 0.12)", borderRadius: "999px", overflow: "hidden" }}>
+                    <div style={{ width: "100%", height: "100%", background: "linear-gradient(90deg, #ff7a45 0%, #e28a52 50%, #68c586 100%)", borderRadius: "999px" }} />
                   </div>
                 </div>
 
-                {/* Unlocked Badges Showcase */}
+                {/* Live Stream / Watch Party Preview Frame */}
+                <div
+                  style={{
+                    background: "rgba(14, 11, 13, 0.85)",
+                    border: "1px solid rgba(185, 152, 135, 0.2)",
+                    borderRadius: "16px",
+                    padding: "12px 14px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#68c586", boxShadow: "0 0 8px #68c586" }} />
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", fontWeight: 800, color: "#ffffff" }}>
+                        4K 60FPS Watch Party
+                      </span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.7rem", color: "rgba(255, 255, 255, 0.6)" }}>
+                        Zero-lag spatial audio • 18 squad members
+                      </span>
+                    </div>
+                  </div>
+                  <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.7rem", fontWeight: 800, color: "#b99887" }}>
+                    LIVE
+                  </span>
+                </div>
+
+                {/* Unlocked Badges 2x2 Showcase */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.15)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <span style={{ fontSize: "18px" }}>🎬</span>
+                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.16)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
+                    <AudioIcon size={18} color="#ff8b60" />
                     <div style={{ display: "flex", flexDirection: "column" }}>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.8rem", fontWeight: 800, color: "#fff" }}>4K 60FPS</span>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.55)" }}>Ultra-HD Cast</span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", fontWeight: 800, color: "#ffffff" }}>Spatial 3D</span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.6)" }}>Positional Audio</span>
                     </div>
                   </div>
 
-                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.15)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <span style={{ fontSize: "18px" }}>🎧</span>
+                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.16)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
+                    <SparkIcon size={18} color="#ffd4be" />
                     <div style={{ display: "flex", flexDirection: "column" }}>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.8rem", fontWeight: 800, color: "#fff" }}>Spatial Audio</span>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.55)" }}>3D Positioning</span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", fontWeight: 800, color: "#ffffff" }}>4 GB Files</span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.6)" }}>Lossless Media</span>
                     </div>
                   </div>
 
-                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.15)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <span style={{ fontSize: "18px" }}>🚀</span>
+                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.16)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
+                    <CrownIcon size={18} color="#b99887" />
                     <div style={{ display: "flex", flexDirection: "column" }}>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.8rem", fontWeight: 800, color: "#fff" }}>4 GB Uploads</span>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.55)" }}>Lossless Media</span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", fontWeight: 800, color: "#ffffff" }}>Video Avatars</span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.6)" }}>Animated Identity</span>
                     </div>
                   </div>
 
-                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.15)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <span style={{ fontSize: "18px" }}>✨</span>
+                  <div style={{ background: "rgba(185, 152, 135, 0.06)", border: "1px solid rgba(185, 152, 135, 0.16)", borderRadius: "12px", padding: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
+                    <ShieldIcon size={18} color="#68c586" />
                     <div style={{ display: "flex", flexDirection: "column" }}>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.8rem", fontWeight: 800, color: "#fff" }}>Video Avatars</span>
-                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.55)" }}>Animated Profiles</span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", fontWeight: 800, color: "#ffffff" }}>Auto Webhooks</span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.6)" }}>Trigger-to-Action</span>
                     </div>
                   </div>
                 </div>
@@ -510,7 +603,7 @@ export default function IgnitePage() {
           </section>
 
           {/* ══════════════════════════════════════════════════════════
-              COMPARISON PANEL & PRICING HEADER
+              COMPARISON PANEL & PRICING
           ══════════════════════════════════════════════════════════ */}
           <section id="compare-table" style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
             {/* Section Header */}
@@ -518,26 +611,26 @@ export default function IgnitePage() {
               <h2
                 style={{
                   fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                  fontSize: "clamp(28px, 4vw, 44px)",
+                  fontSize: "clamp(30px, 4.5vw, 48px)",
                   fontWeight: 800,
                   color: "#ffffff",
-                  letterSpacing: "-0.03em",
+                  letterSpacing: "-0.035em",
                   textTransform: "uppercase",
                   margin: "0 0 12px",
                 }}
               >
-                Choose Your Plan.
+                LEVEL UP YOUR SQUAD.
               </h2>
               <p
                 style={{
                   fontFamily: "var(--font-karla), 'Karla', sans-serif",
                   fontSize: "clamp(14px, 1.4vw, 16px)",
-                  color: "rgba(255, 255, 255, 0.75)",
-                  maxWidth: "520px",
+                  color: "rgba(255, 255, 255, 0.8)",
+                  maxWidth: "540px",
                   margin: "0 auto 24px",
                 }}
               >
-                Everything in Reelms is designed with zero bloatware. Upgrade whenever you want more scale, exclusive media power, and server boosts.
+                Pick your ignition tier, unlock radical capabilities, and power up your community with zero bloatware.
               </p>
 
               {/* Billing Toggle Switcher */}
@@ -545,8 +638,8 @@ export default function IgnitePage() {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  background: "rgba(24, 20, 22, 0.8)",
-                  border: "1px solid rgba(185, 152, 135, 0.25)",
+                  background: "rgba(24, 20, 22, 0.85)",
+                  border: "1px solid rgba(185, 152, 135, 0.3)",
                   borderRadius: "999px",
                   padding: "4px",
                   gap: "4px",
@@ -556,11 +649,11 @@ export default function IgnitePage() {
                   type="button"
                   onClick={() => setBilling("monthly")}
                   style={{
-                    background: billing === "monthly" ? "rgba(185, 152, 135, 0.2)" : "transparent",
+                    background: billing === "monthly" ? "rgba(185, 152, 135, 0.22)" : "transparent",
                     color: billing === "monthly" ? "#ffffff" : "rgba(255, 255, 255, 0.6)",
                     border: "none",
                     borderRadius: "999px",
-                    padding: "8px 20px",
+                    padding: "8px 22px",
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
                     fontSize: "13px",
                     fontWeight: 800,
@@ -574,11 +667,11 @@ export default function IgnitePage() {
                   type="button"
                   onClick={() => setBilling("yearly")}
                   style={{
-                    background: billing === "yearly" ? "linear-gradient(135deg, rgba(226, 138, 82, 0.3) 0%, rgba(185, 152, 135, 0.3) 100%)" : "transparent",
+                    background: billing === "yearly" ? "linear-gradient(135deg, rgba(226, 138, 82, 0.35) 0%, rgba(185, 152, 135, 0.35) 100%)" : "transparent",
                     color: billing === "yearly" ? "#ffffff" : "rgba(255, 255, 255, 0.6)",
                     border: "none",
                     borderRadius: "999px",
-                    padding: "8px 20px",
+                    padding: "8px 22px",
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
                     fontSize: "13px",
                     fontWeight: 800,
@@ -597,13 +690,13 @@ export default function IgnitePage() {
               </div>
             </div>
 
-            {/* ── Mobile Pair Switcher (Displayed on Small Viewports) ── */}
+            {/* Mobile Tab Selector */}
             <div className="flex md:hidden" style={{ width: "100%", justifyContent: "center", marginBottom: "20px" }}>
               <div
                 style={{
                   display: "flex",
-                  background: "rgba(24, 20, 22, 0.8)",
-                  border: "1px solid rgba(185, 152, 135, 0.2)",
+                  background: "rgba(24, 20, 22, 0.85)",
+                  border: "1px solid rgba(185, 152, 135, 0.25)",
                   borderRadius: "999px",
                   padding: "4px",
                   gap: "4px",
@@ -620,7 +713,7 @@ export default function IgnitePage() {
                     color: mobileCompare === "free-ignite" ? "#fff" : "rgba(255, 255, 255, 0.6)",
                     border: "none",
                     borderRadius: "999px",
-                    padding: "6px 8px",
+                    padding: "7px 8px",
                     fontSize: "11px",
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
                     fontWeight: 800,
@@ -634,11 +727,11 @@ export default function IgnitePage() {
                   onClick={() => setMobileCompare("ignite-all")}
                   style={{
                     flex: 1,
-                    background: mobileCompare === "ignite-all" ? "rgba(255, 107, 74, 0.25)" : "transparent",
+                    background: mobileCompare === "ignite-all" ? "rgba(255, 107, 74, 0.28)" : "transparent",
                     color: mobileCompare === "ignite-all" ? "#ff8b60" : "rgba(255, 255, 255, 0.6)",
                     border: "none",
                     borderRadius: "999px",
-                    padding: "6px 8px",
+                    padding: "7px 8px",
                     fontSize: "11px",
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
                     fontWeight: 800,
@@ -656,7 +749,7 @@ export default function IgnitePage() {
                     color: mobileCompare === "free-all" ? "#fff" : "rgba(255, 255, 255, 0.6)",
                     border: "none",
                     borderRadius: "999px",
-                    padding: "6px 8px",
+                    padding: "7px 8px",
                     fontSize: "11px",
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
                     fontWeight: 800,
@@ -669,12 +762,12 @@ export default function IgnitePage() {
             </div>
 
             {/* ══════════════════════════════════════════════════════════
-                DESKTOP & RESPONSIVE COMPARISON TABLE
+                COMPARISON TABLE (DESKTOP & MOBILE)
             ══════════════════════════════════════════════════════════ */}
             <div
               style={{
                 width: "100%",
-                background: "rgba(24, 20, 22, 0.7)",
+                background: "rgba(24, 20, 22, 0.75)",
                 backdropFilter: "blur(24px)",
                 WebkitBackdropFilter: "blur(24px)",
                 border: "1px solid rgba(185, 152, 135, 0.22)",
@@ -683,24 +776,24 @@ export default function IgnitePage() {
                 boxShadow: "0 24px 60px rgba(0, 0, 0, 0.5)",
               }}
             >
-              {/* Table Column Headers & Pricing Cards */}
+              {/* Table Column Headers & Pricing Cards (Desktop Grid) */}
               <div
                 style={{
                   display: "grid",
                   gridTemplateColumns: "1.4fr 1fr 1fr 1fr",
                   borderBottom: "1px solid rgba(185, 152, 135, 0.2)",
-                  background: "rgba(32, 25, 29, 0.6)",
+                  background: "rgba(32, 25, 29, 0.65)",
                 }}
                 className="hidden md:grid"
               >
-                {/* Feature Label Column Header */}
+                {/* Features Column */}
                 <div style={{ padding: "28px 24px", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                   <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.85rem", fontWeight: 800, color: "var(--ta)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
                     Features & Limits
                   </span>
                 </div>
 
-                {/* Free Tier Header */}
+                {/* Free Card */}
                 <div style={{ padding: "28px 20px", display: "flex", flexDirection: "column", gap: "8px", borderLeft: "1px solid rgba(185, 152, 135, 0.12)" }}>
                   <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.2rem", fontWeight: 800, color: "#fff" }}>
                     Free
@@ -713,8 +806,8 @@ export default function IgnitePage() {
                       / forever
                     </span>
                   </div>
-                  <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.6)", minHeight: "36px" }}>
-                    Essential high-performance squad communication.
+                  <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.65)", minHeight: "36px" }}>
+                    Essential squad communication with zero bloat.
                   </span>
                   <Link
                     href="https://app.reelms.io"
@@ -739,13 +832,13 @@ export default function IgnitePage() {
                   </Link>
                 </div>
 
-                {/* Ignite Tier Header */}
+                {/* Ignite Card */}
                 <div style={{ padding: "28px 20px", display: "flex", flexDirection: "column", gap: "8px", borderLeft: "1px solid rgba(185, 152, 135, 0.12)", background: "rgba(185, 152, 135, 0.03)" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                     <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.2rem", fontWeight: 800, color: "#fff" }}>
                       Ignite
                     </span>
-                    <span style={{ fontSize: "13px" }}>⚡</span>
+                    <SparkIcon size={14} color="#b99887" />
                   </div>
                   <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
                     <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.8rem", fontWeight: 800, color: "#fff" }}>
@@ -755,7 +848,7 @@ export default function IgnitePage() {
                       / month
                     </span>
                   </div>
-                  <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.6)", minHeight: "36px" }}>
+                  <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.65)", minHeight: "36px" }}>
                     4K streaming, 2GB files & 1 one-time Server Boost.
                   </span>
                   <button
@@ -780,19 +873,19 @@ export default function IgnitePage() {
                   </button>
                 </div>
 
-                {/* Ignite All Tier Header (Featured) */}
+                {/* Ignite All Card (Featured) */}
                 <div
                   style={{
                     padding: "28px 20px",
                     display: "flex",
                     flexDirection: "column",
                     gap: "8px",
-                    borderLeft: "1px solid rgba(255, 107, 74, 0.35)",
-                    background: "linear-gradient(180deg, rgba(255, 107, 74, 0.12) 0%, rgba(24, 20, 22, 0.02) 100%)",
+                    borderLeft: "1px solid rgba(255, 122, 69, 0.35)",
+                    background: "linear-gradient(180deg, rgba(255, 107, 74, 0.14) 0%, rgba(24, 20, 22, 0.02) 100%)",
                     position: "relative",
                   }}
                 >
-                  <div style={{ position: "absolute", top: "10px", right: "14px", background: "linear-gradient(135deg, #ff6b4a 0%, #e28a52 100%)", color: "#181416", fontSize: "10px", fontWeight: 900, padding: "2px 8px", borderRadius: "999px" }}>
+                  <div style={{ position: "absolute", top: "10px", right: "14px", background: "linear-gradient(135deg, #ff7a45 0%, #e28a52 100%)", color: "#181416", fontSize: "10px", fontWeight: 900, padding: "2px 8px", borderRadius: "999px" }}>
                     MOST POPULAR
                   </div>
 
@@ -800,7 +893,7 @@ export default function IgnitePage() {
                     <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.2rem", fontWeight: 800, color: "#fff" }}>
                       Ignite All
                     </span>
-                    <span style={{ fontSize: "13px" }}>🔥</span>
+                    <FlameIcon size={14} color="#ff7a45" />
                   </div>
 
                   <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
@@ -812,7 +905,7 @@ export default function IgnitePage() {
                     </span>
                   </div>
 
-                  <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.75)", minHeight: "36px" }}>
+                  <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.8)", minHeight: "36px" }}>
                     Unlimited scale, 4GB uploads + 1 Monthly Server Boost.
                   </span>
 
@@ -820,7 +913,7 @@ export default function IgnitePage() {
                     type="button"
                     style={{
                       marginTop: "10px",
-                      background: "linear-gradient(135deg, #ff6b4a 0%, #e28a52 100%)",
+                      background: "linear-gradient(135deg, #ff7a45 0%, #e28a52 100%)",
                       border: "none",
                       color: "#181416",
                       padding: "9px 16px",
@@ -844,15 +937,19 @@ export default function IgnitePage() {
               <div>
                 {COMPARISON_DATA.map((cat, catIdx) => (
                   <div key={cat.category}>
-                    {/* Category Divider Header */}
+                    {/* Category Header */}
                     <div
                       style={{
                         padding: "16px 24px",
-                        background: "rgba(36, 28, 32, 0.8)",
+                        background: "rgba(36, 28, 32, 0.85)",
                         borderTop: catIdx > 0 ? "1px solid rgba(185, 152, 135, 0.2)" : "none",
                         borderBottom: "1px solid rgba(185, 152, 135, 0.12)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
                       }}
                     >
+                      {cat.icon}
                       <span
                         style={{
                           fontFamily: "var(--font-karla), 'Karla', sans-serif",
@@ -883,25 +980,25 @@ export default function IgnitePage() {
                           onMouseEnter={e => (e.currentTarget.style.background = "rgba(185, 152, 135, 0.05)")}
                           onMouseLeave={e => (e.currentTarget.style.background = rowIdx % 2 === 1 ? "rgba(185, 152, 135, 0.02)" : "transparent")}
                         >
-                          {/* Row Feature Name */}
+                          {/* Row Name */}
                           <div style={{ padding: "16px 24px" }}>
                             <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.88rem", fontWeight: 700, color: "rgba(255, 255, 255, 0.9)" }}>
                               {row.name}
                             </span>
                           </div>
 
-                          {/* Free Column */}
+                          {/* Free */}
                           <div style={{ padding: "16px 20px", borderLeft: "1px solid rgba(185, 152, 135, 0.1)", fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", color: "rgba(255, 255, 255, 0.65)" }}>
                             {getColValue(row, "free")}
                           </div>
 
-                          {/* Ignite Column */}
+                          {/* Ignite */}
                           <div style={{ padding: "16px 20px", borderLeft: "1px solid rgba(185, 152, 135, 0.1)", fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", color: "#f5e6de", fontWeight: 700 }}>
                             {getColValue(row, "ignite")}
                           </div>
 
-                          {/* Ignite All Column */}
-                          <div style={{ padding: "16px 20px", borderLeft: "1px solid rgba(255, 107, 74, 0.2)", fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", color: "#ff8b60", fontWeight: 800 }}>
+                          {/* Ignite All */}
+                          <div style={{ padding: "16px 20px", borderLeft: "1px solid rgba(255, 122, 69, 0.22)", fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.82rem", color: "#ff8b60", fontWeight: 800 }}>
                             {getColValue(row, "igniteAll")}
                           </div>
                         </div>
@@ -932,7 +1029,7 @@ export default function IgnitePage() {
                             </span>
                             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
                               <div style={{ background: "rgba(185, 152, 135, 0.05)", borderRadius: "10px", padding: "8px 12px" }}>
-                                <div style={{ fontSize: "10px", fontFamily: "var(--font-karla), 'Karla', sans-serif", color: "rgba(255, 255, 255, 0.45)", textTransform: "uppercase", marginBottom: "2px", fontWeight: 700 }}>
+                                <div style={{ fontSize: "10px", fontFamily: "var(--font-karla), 'Karla', sans-serif", color: "rgba(255, 255, 255, 0.5)", textTransform: "uppercase", marginBottom: "2px", fontWeight: 700 }}>
                                   {leftLabel}
                                 </div>
                                 <div style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.8)", fontWeight: 600 }}>
