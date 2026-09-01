@@ -101,7 +101,7 @@ export default function AmbientGradientBackground() {
         }}
       />
 
-      {/* ── Layer 3: High-Definition Tactile Film Grain Overlay (Dual Layer) ── */}
+      {/* ── Layer 3: Ultra-Fine Micro Film Grain Overlay ── */}
       <div
         aria-hidden="true"
         style={{
@@ -110,23 +110,10 @@ export default function AmbientGradientBackground() {
           width: "100%",
           height: "100%",
           pointerEvents: "none",
-          opacity: 0.35,
-          mixBlendMode: "screen",
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.7'/%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          pointerEvents: "none",
-          opacity: 0.28,
+          opacity: 0.075,
           mixBlendMode: "overlay",
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter2)'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='microGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23microGrain)'/%3E%3C/svg%3E")`,
+          backgroundSize: "90px 90px",
           backgroundRepeat: "repeat",
         }}
       />

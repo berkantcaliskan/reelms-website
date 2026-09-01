@@ -63,23 +63,23 @@ export default function DownloadPage() {
               {/* Windows */}
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
                 <a
-                  href="https://github.com/berkantcaliskan/reelms-project/releases/download/v1.0.0/Reelms-Setup-1.0.0.exe"
-                  download
+                  href="/api/download/windows"
                   style={{
                     display: "flex",
                     alignItems: "center",
                     gap: "14px",
-                    background: "rgba(185, 152, 135, 0.07)",
-                    border: "1px solid rgba(185, 152, 135, 0.2)",
+                    background: "rgba(185, 152, 135, 0.1)",
+                    border: "1px solid rgba(185, 152, 135, 0.35)",
                     borderRadius: "999px",
-                    padding: "16px 32px",
+                    padding: "16px 36px",
                     cursor: "pointer",
                     opacity: 1,
-                    transition: "all 0.2s",
+                    transition: "all 0.2s ease",
                     textDecoration: "none",
+                    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.35)",
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(185,152,135,0.12)"; e.currentTarget.style.borderColor = "rgba(185,152,135,0.35)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = "rgba(185,152,135,0.07)"; e.currentTarget.style.borderColor = "rgba(185,152,135,0.2)"; }}
+                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.2)"; e.currentTarget.style.borderColor = "rgba(185, 152, 135, 0.6)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.1)"; e.currentTarget.style.borderColor = "rgba(185, 152, 135, 0.35)"; e.currentTarget.style.transform = "translateY(0)"; }}
                 >
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
                     {/* top-left — only top-left corner rounded */}
@@ -92,21 +92,21 @@ export default function DownloadPage() {
                     <path d="M10.75,10.75 L20,10.75 L20,18.5 A1.5,1.5 0 0,1 18.5,20 L10.75,20 Z" fill="#b99887" opacity="0.55"/>
                   </svg>
                   <span style={{ whiteSpace: "nowrap" }}>
-                    <span style={{ fontFamily: "var(--font-jakarta), sans-serif", fontSize: "clamp(13px, 1.6vw, 15px)", color: "#b99887", fontWeight: 500 }}>Download for </span>
-                    <span style={{ fontFamily: "var(--font-dela), sans-serif", fontSize: "clamp(14px, 1.8vw, 17px)", color: "#b99887", fontWeight: 400 }}>Windows</span>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "clamp(14px, 1.6vw, 16px)", color: "#f5e6de", fontWeight: 700 }}>Download for </span>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "clamp(15px, 1.8vw, 18px)", color: "#b99887", fontWeight: 800 }}>Windows</span>
                   </span>
                 </a>
                 <div style={{
-                  fontFamily: "var(--font-jakarta), sans-serif",
-                  fontSize: "11px",
+                  fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                  fontSize: "12px",
                   color: "#b99887",
-                  opacity: 0.3,
-                  letterSpacing: "0.08em",
+                  opacity: 0.6,
+                  letterSpacing: "0.05em",
                   display: "flex",
                   gap: "10px",
                   alignItems: "center",
                 }}>
-                  <span>Version 1.1 / 2026</span>
+                  <span>Latest Release</span>
                   <span style={{ opacity: 0.5 }}>·</span>
                   <span>Windows 10 / 11</span>
                   <span style={{ opacity: 0.5 }}>·</span>
