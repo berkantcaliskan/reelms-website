@@ -176,7 +176,7 @@ export default function DownloadPage() {
                   WebkitBackdropFilter: "blur(20px)",
                   border: "1.5px solid rgba(185, 152, 135, 0.4)",
                   borderRadius: "999px",
-                  padding: "14px 22px 14px 20px",
+                  padding: "16px 24px",
                   textDecoration: "none",
                   transition: "all 0.25s cubic-bezier(0.22, 1, 0.36, 1)",
                   cursor: "pointer",
@@ -192,27 +192,13 @@ export default function DownloadPage() {
                   e.currentTarget.style.transform = "translateY(0px)";
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                  <div
-                    style={{
-                      width: "42px",
-                      height: "42px",
-                      borderRadius: "50%",
-                      background: "rgba(185, 152, 135, 0.14)",
-                      border: "1px solid rgba(185, 152, 135, 0.3)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                      <path d="M1.5,0 L9.25,0 L9.25,9.25 L0,9.25 L0,1.5 A1.5,1.5 0 0,1 1.5,0 Z" fill="#b99887" />
-                      <path d="M10.75,0 L18.5,0 A1.5,1.5 0 0,1 20,1.5 L20,9.25 L10.75,9.25 Z" fill="#b99887" opacity="0.85" />
-                      <path d="M0,10.75 L9.25,10.75 L9.25,20 L1.5,20 A1.5,1.5 0 0,1 0,18.5 Z" fill="#b99887" opacity="0.85" />
-                      <path d="M10.75,10.75 L20,10.75 L20,18.5 A1.5,1.5 0 0,1 18.5,20 L10.75,20 Z" fill="#b99887" opacity="0.65" />
-                    </svg>
-                  </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                  <svg width="22" height="22" viewBox="0 0 20 20" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+                    <path d="M1.5,0 L9.25,0 L9.25,9.25 L0,9.25 L0,1.5 A1.5,1.5 0 0,1 1.5,0 Z" fill="#b99887" />
+                    <path d="M10.75,0 L18.5,0 A1.5,1.5 0 0,1 20,1.5 L20,9.25 L10.75,9.25 Z" fill="#b99887" opacity="0.85" />
+                    <path d="M0,10.75 L9.25,10.75 L9.25,20 L1.5,20 A1.5,1.5 0 0,1 0,18.5 Z" fill="#b99887" opacity="0.85" />
+                    <path d="M10.75,10.75 L20,10.75 L20,18.5 A1.5,1.5 0 0,1 18.5,20 L10.75,20 Z" fill="#b99887" opacity="0.65" />
+                  </svg>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
                     <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.05rem", fontWeight: 800, color: "#ffffff" }}>
@@ -255,31 +241,17 @@ export default function DownloadPage() {
                   WebkitBackdropFilter: "blur(18px)",
                   border: "1px solid rgba(185, 152, 135, 0.18)",
                   borderRadius: "999px",
-                  padding: "14px 22px 14px 20px",
+                  padding: "16px 24px",
                   opacity: 0.7,
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                  <div
-                    style={{
-                      width: "42px",
-                      height: "42px",
-                      borderRadius: "50%",
-                      background: "rgba(185, 152, 135, 0.1)",
-                      border: "1px solid rgba(185, 152, 135, 0.2)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
-                        fill="#b99887"
-                      />
-                    </svg>
-                  </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+                    <path
+                      d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      fill="#b99887"
+                    />
+                  </svg>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
                     <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.98rem", fontWeight: 800, color: "#ffffff" }}>
@@ -316,29 +288,16 @@ export default function DownloadPage() {
                     WebkitBackdropFilter: "blur(18px)",
                     border: "1px solid rgba(185, 152, 135, 0.18)",
                     borderRadius: "999px",
-                    padding: "12px 14px",
+                    padding: "14px 18px",
                     opacity: 0.7,
                   }}
                 >
-                  <div
-                    style={{
-                      width: "32px",
-                      height: "32px",
-                      borderRadius: "50%",
-                      background: "rgba(185, 152, 135, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
-                        fill="#b99887"
-                      />
-                    </svg>
-                  </div>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+                    <path
+                      d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      fill="#b99887"
+                    />
+                  </svg>
                   <div style={{ display: "flex", flexDirection: "column", gap: "1px", minWidth: 0 }}>
                     <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.85rem", fontWeight: 800, color: "#ffffff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       App Store
@@ -360,29 +319,16 @@ export default function DownloadPage() {
                     WebkitBackdropFilter: "blur(18px)",
                     border: "1px solid rgba(185, 152, 135, 0.18)",
                     borderRadius: "999px",
-                    padding: "12px 14px",
+                    padding: "14px 18px",
                     opacity: 0.7,
                   }}
                 >
-                  <div
-                    style={{
-                      width: "32px",
-                      height: "32px",
-                      borderRadius: "50%",
-                      background: "rgba(185, 152, 135, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                      <path d="M3.609 1.814L13.793 12 3.61 22.186a2.296 2.296 0 0 1-.61-.954V2.768c.13-.377.346-.713.61-.954z" fill="#b99887" opacity="0.8"/>
-                      <path d="M17.39 8.403l-3.597 3.597 3.597 3.597 4.092-2.338a1.737 1.737 0 0 0 0-3.018l-4.092-2.338z" fill="#68c586"/>
-                      <path d="M13.793 12L3.609 1.814a2.27 2.27 0 0 1 1.637-.179l12.144 6.768-3.597 3.597z" fill="#b99887"/>
-                      <path d="M13.793 12l3.597 3.597-12.144 6.768a2.27 2.27 0 0 1-1.637-.179L13.793 12z" fill="#b99887" opacity="0.9"/>
-                    </svg>
-                  </div>
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+                    <path d="M3.609 1.814L13.793 12 3.61 22.186a2.296 2.296 0 0 1-.61-.954V2.768c.13-.377.346-.713.61-.954z" fill="#b99887" opacity="0.8"/>
+                    <path d="M17.39 8.403l-3.597 3.597 3.597 3.597 4.092-2.338a1.737 1.737 0 0 0 0-3.018l-4.092-2.338z" fill="#68c586"/>
+                    <path d="M13.793 12L3.609 1.814a2.27 2.27 0 0 1 1.637-.179l12.144 6.768-3.597 3.597z" fill="#b99887"/>
+                    <path d="M13.793 12l3.597 3.597-12.144 6.768a2.27 2.27 0 0 1-1.637-.179L13.793 12z" fill="#b99887" opacity="0.9"/>
+                  </svg>
                   <div style={{ display: "flex", flexDirection: "column", gap: "1px", minWidth: 0 }}>
                     <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.85rem", fontWeight: 800, color: "#ffffff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       Google Play
