@@ -29,13 +29,14 @@ const SUB_LINKS: Record<string, { label: string; href: string }[]> = {
 };
 
 const linkStyle: React.CSSProperties = {
-  fontFamily: "var(--font-dela), sans-serif",
-  fontSize: "0.88rem",
+  fontFamily: "var(--font-karla), 'Karla', sans-serif",
+  fontSize: "0.95rem",
+  fontWeight: 700,
   color: "var(--ta)",
   textDecoration: "none",
   transition: "opacity 0.2s",
   whiteSpace: "nowrap",
-  opacity: 0.65,
+  opacity: 0.7,
 };
 
 export default function Header() {
@@ -69,7 +70,7 @@ export default function Header() {
             height={48}
             style={{ flexShrink: 0, objectFit: "contain" }}
           />
-          <span style={{ fontFamily: "var(--font-dela), sans-serif", fontSize: "1.4rem", color: "var(--ta)", letterSpacing: "0.02em" }}>
+          <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.55rem", fontWeight: 800, color: "var(--ta)", letterSpacing: "-0.02em" }}>
             Reelms
           </span>
         </Link>
@@ -165,8 +166,8 @@ export default function Header() {
           onMouseEnter={e => { e.currentTarget.style.background = "rgba(185,152,135,0.12)"; e.currentTarget.style.borderColor = "rgba(185,152,135,0.35)"; }}
           onMouseLeave={e => { e.currentTarget.style.background = "rgba(185,152,135,0.07)"; e.currentTarget.style.borderColor = "rgba(185,152,135,0.2)"; }}
         >
-          <span style={{ fontFamily: "var(--font-jakarta), sans-serif", fontSize: "13px", color: "#b99887", fontWeight: 500 }}>Start </span>
-          <span style={{ fontFamily: "var(--font-dela), sans-serif", fontSize: "14px", color: "#b99887", fontWeight: 400 }}>Web App</span>
+          <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "14px", color: "#b99887", fontWeight: 700 }}>Start </span>
+          <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "14px", color: "#b99887", fontWeight: 800 }}>Web App</span>
         </Link>
 
         {/* Hamburger button — mobile/tablet only */}
@@ -302,8 +303,8 @@ export default function Header() {
                 onMouseEnter={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.22)"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.12)"; }}
               >
-                <span style={{ fontFamily: "var(--font-jakarta), sans-serif", fontSize: "14px", color: "#b99887", fontWeight: 600 }}>Start </span>
-                <span style={{ fontFamily: "var(--font-dela), sans-serif", fontSize: "15px", color: "#b99887", fontWeight: 400 }}>Web App ›</span>
+                <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "15px", color: "#b99887", fontWeight: 700 }}>Start </span>
+                <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "15px", color: "#b99887", fontWeight: 800 }}>Web App ›</span>
               </Link>
 
               {/* Navigation Links */}

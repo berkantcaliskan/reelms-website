@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
-import { Dela_Gothic_One, Plus_Jakarta_Sans } from "next/font/google";
+import { Karla } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import PageTransition from "@/components/PageTransition";
 
-const delaGothic = Dela_Gothic_One({
-  weight: "400",
-  variable: "--font-dela",
-  subsets: ["latin"],
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-jakarta",
-  subsets: ["latin"],
+const karla = Karla({
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-karla",
+  subsets: ["latin", "latin-ext"],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${delaGothic.variable} ${plusJakarta.variable} antialiased`}>
+      <body className={`${karla.variable} antialiased`}>
         <Script id="sw-kill" strategy="afterInteractive">{`
           if ('serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistrations().then(function(r) {

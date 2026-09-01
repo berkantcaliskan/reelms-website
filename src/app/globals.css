@@ -85,11 +85,23 @@
   opacity: 0.55;
 }
 
+:root {
+  --font-karla: var(--font-karla, 'Karla', sans-serif);
+  --font-dela: var(--font-karla, 'Karla', sans-serif);
+  --font-jakarta: var(--font-karla, 'Karla', sans-serif);
+}
+
 body {
-  font-family: var(--font-jakarta), sans-serif;
+  font-family: var(--font-karla), 'Karla', sans-serif;
   min-height: 100vh;
   color: var(--ta);
   background-color: #181416;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-karla), 'Karla', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }

@@ -25,9 +25,9 @@ export default function Beginning() {
 
           {/* "THE WORLD IS IN" */}
           <p style={{
-            fontFamily: "var(--font-jakarta), sans-serif",
+            fontFamily: "var(--font-karla), 'Karla', sans-serif",
             fontSize: "clamp(12px, 3vw, 20px)",
-            fontWeight: 700,
+            fontWeight: 800,
             letterSpacing: "0.15em",
             textTransform: "uppercase",
             background: "linear-gradient(90deg, #68c586, #b99887)",
@@ -39,7 +39,7 @@ export default function Beginning() {
           </p>
 
           {/* "only one Reelm." */}
-          <h1 style={{ fontFamily: "var(--font-dela), sans-serif", fontSize: "clamp(32px, 7vw, 68px)", fontWeight: 400, lineHeight: 1.05 }}>
+          <h1 style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "clamp(34px, 7.5vw, 76px)", fontWeight: 800, lineHeight: 1.02, letterSpacing: "-0.03em" }}>
             <span style={{ color: "#b99887" }}>only one </span>
             <span style={{ background: "linear-gradient(90deg, #b99887, #68c586)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Reelm.
@@ -51,13 +51,13 @@ export default function Beginning() {
             href="/download"
             style={{
               marginTop: "28px",
-              fontFamily: "var(--font-jakarta), sans-serif",
-              fontSize: "clamp(13px, 1.6vw, 16px)",
-              fontWeight: 600,
+              fontFamily: "var(--font-karla), 'Karla', sans-serif",
+              fontSize: "clamp(14px, 1.8vw, 17px)",
+              fontWeight: 700,
               color: "var(--ta)",
               textDecoration: "none",
               opacity: 0.7,
-              letterSpacing: "0.03em",
+              letterSpacing: "0.02em",
               transition: "opacity 0.2s",
             }}
             onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
