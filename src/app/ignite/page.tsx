@@ -254,7 +254,8 @@ export default function IgnitePage() {
           title: "Free",
           price: "$0",
           period: "/ forever",
-          desc: "Essential squad communication.",
+          monthlyBreakdown: null,
+          desc: "Essential squad communication with zero bloat.",
           btnText: "Start Free",
           btnHref: "https://app.reelms.io",
           isHighlighted: false,
@@ -262,9 +263,10 @@ export default function IgnitePage() {
       case "ignite":
         return {
           title: "Ignite",
-          price: isYearly ? "$3.99" : "$4.99",
-          period: "/ month",
-          desc: "4K streaming & 1 Server Boost.",
+          price: isYearly ? "$47.90" : "$4.99",
+          period: isYearly ? "/ year" : "/ month",
+          monthlyBreakdown: isYearly ? "$3.99 / mo, billed annually" : null,
+          desc: "4K streaming, 2GB files & 1 one-time Server Boost.",
           btnText: "Get Ignite",
           btnHref: null,
           isHighlighted: false,
@@ -272,9 +274,10 @@ export default function IgnitePage() {
       case "igniteAll":
         return {
           title: "Ignite All",
-          price: isYearly ? "$7.99" : "$9.99",
-          period: "/ month",
-          desc: "Unlimited + 1 Monthly Boost.",
+          price: isYearly ? "$95.90" : "$9.99",
+          period: isYearly ? "/ year" : "/ month",
+          monthlyBreakdown: isYearly ? "$7.99 / mo, billed annually" : null,
+          desc: "Unlimited scale, 4GB uploads + 1 Monthly Server Boost.",
           btnText: "Get Ignite All",
           btnHref: null,
           isHighlighted: true,
@@ -703,12 +706,17 @@ export default function IgnitePage() {
                   <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.2rem", fontWeight: 800, color: "#fff" }}>
                     Free
                   </span>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.8rem", fontWeight: 800, color: "#ffffff" }}>
-                      $0
-                    </span>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.5)" }}>
-                      / forever
+                  <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.8rem", fontWeight: 800, color: "#ffffff" }}>
+                        $0
+                      </span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.5)" }}>
+                        / forever
+                      </span>
+                    </div>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.74rem", color: "rgba(255, 255, 255, 0.45)", fontWeight: 700 }}>
+                      Free forever
                     </span>
                   </div>
                   <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.65)", minHeight: "36px" }}>
@@ -745,13 +753,24 @@ export default function IgnitePage() {
                     </span>
                     <SparkIcon size={14} color="#b99887" />
                   </div>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.8rem", fontWeight: 800, color: "#fff" }}>
-                      {isYearly ? "$3.99" : "$4.99"}
-                    </span>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.5)" }}>
-                      / month
-                    </span>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.8rem", fontWeight: 800, color: "#fff" }}>
+                        {isYearly ? "$47.90" : "$4.99"}
+                      </span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.5)" }}>
+                        {isYearly ? "/ year" : "/ month"}
+                      </span>
+                    </div>
+                    {isYearly ? (
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.74rem", color: "#86efac", fontWeight: 700 }}>
+                        $3.99 / mo, billed annually
+                      </span>
+                    ) : (
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.74rem", color: "rgba(255, 255, 255, 0.45)", fontWeight: 700 }}>
+                        Billed monthly
+                      </span>
+                    )}
                   </div>
                   <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.65)", minHeight: "36px" }}>
                     4K streaming, 2GB files & 1 one-time Server Boost.
@@ -801,13 +820,24 @@ export default function IgnitePage() {
                     <FlameIcon size={14} color="#ff7a45" />
                   </div>
 
-                  <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.8rem", fontWeight: 800, color: "#ff8b60" }}>
-                      {isYearly ? "$7.99" : "$9.99"}
-                    </span>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.5)" }}>
-                      / month
-                    </span>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.8rem", fontWeight: 800, color: "#ff8b60" }}>
+                        {isYearly ? "$95.90" : "$9.99"}
+                      </span>
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.5)" }}>
+                        {isYearly ? "/ year" : "/ month"}
+                      </span>
+                    </div>
+                    {isYearly ? (
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.74rem", color: "#86efac", fontWeight: 700 }}>
+                        $7.99 / mo, billed annually
+                      </span>
+                    ) : (
+                      <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.74rem", color: "rgba(255, 255, 255, 0.45)", fontWeight: 700 }}>
+                        Billed monthly
+                      </span>
+                    )}
                   </div>
 
                   <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.8)", minHeight: "36px" }}>
@@ -858,20 +888,25 @@ export default function IgnitePage() {
                     padding: "12px",
                     display: "flex",
                     flexDirection: "column",
-                    gap: "4px",
+                    gap: "3px",
                   }}
                 >
                   <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.95rem", fontWeight: 800, color: leftTier.isHighlighted ? "#ff8b60" : "#ffffff" }}>
                     {leftTier.title}
                   </span>
                   <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.35rem", fontWeight: 800, color: "#ffffff" }}>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.25rem", fontWeight: 800, color: "#ffffff" }}>
                       {leftTier.price}
                     </span>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.55)" }}>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.65rem", color: "rgba(255, 255, 255, 0.55)" }}>
                       {leftTier.period}
                     </span>
                   </div>
+                  {leftTier.monthlyBreakdown && (
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.62rem", color: "#86efac", fontWeight: 700, lineHeight: 1.1 }}>
+                      {leftTier.monthlyBreakdown}
+                    </span>
+                  )}
                   {leftTier.btnHref ? (
                     <Link
                       href={leftTier.btnHref}
@@ -921,20 +956,25 @@ export default function IgnitePage() {
                     padding: "12px",
                     display: "flex",
                     flexDirection: "column",
-                    gap: "4px",
+                    gap: "3px",
                   }}
                 >
                   <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.95rem", fontWeight: 800, color: rightTier.isHighlighted ? "#ff8b60" : "#ffffff" }}>
                     {rightTier.title}
                   </span>
                   <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.35rem", fontWeight: 800, color: "#ffffff" }}>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.25rem", fontWeight: 800, color: "#ffffff" }}>
                       {rightTier.price}
                     </span>
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.55)" }}>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.65rem", color: "rgba(255, 255, 255, 0.55)" }}>
                       {rightTier.period}
                     </span>
                   </div>
+                  {rightTier.monthlyBreakdown && (
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.62rem", color: "#86efac", fontWeight: 700, lineHeight: 1.1 }}>
+                      {rightTier.monthlyBreakdown}
+                    </span>
+                  )}
                   {rightTier.btnHref ? (
                     <Link
                       href={rightTier.btnHref}

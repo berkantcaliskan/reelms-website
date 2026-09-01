@@ -62,16 +62,23 @@ export default function Header() {
         style={{ padding: "20px 23px 20px 22px", display: "flex", alignItems: "center", justifyContent: "space-between", position: "relative", zIndex: 200 }}
       >
         {/* Logo */}
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "14px", textDecoration: "none", cursor: "pointer" }}>
+        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none", cursor: "pointer" }}>
           <Image
             src="/reelms-logo.svg"
             alt="Reelms"
-            width={48}
-            height={48}
+            width={44}
+            height={44}
             style={{ flexShrink: 0, objectFit: "contain" }}
           />
-          <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.55rem", fontWeight: 800, color: "var(--ta)", letterSpacing: "-0.02em" }}>
-            Reelms
+          <span style={{
+            fontFamily: "var(--font-karla), 'Karla', sans-serif",
+            fontSize: "1.45rem",
+            fontWeight: 800,
+            color: "var(--ta)",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+          }}>
+            REELMS
           </span>
         </Link>
 
@@ -270,8 +277,15 @@ export default function Header() {
                     height={36}
                     style={{ objectFit: "contain" }}
                   />
-                  <span style={{ fontFamily: "var(--font-dela), sans-serif", fontSize: "1.2rem", color: "var(--ta)" }}>
-                    Reelms
+                  <span style={{
+                    fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                    fontSize: "1.2rem",
+                    fontWeight: 800,
+                    color: "var(--ta)",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                  }}>
+                    REELMS
                   </span>
                 </Link>
 
