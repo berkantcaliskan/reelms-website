@@ -44,54 +44,54 @@ export default function Beginning() {
               flexDirection: "column",
               alignItems: "flex-start",
               textAlign: "left",
-              gap: "14px",
+              gap: "16px",
             }}>
-              {/* "THE WORLD IS IN" */}
-              <p style={{
-                fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                fontSize: "clamp(12px, 1.8vw, 16px)",
-                fontWeight: 800,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                background: "linear-gradient(90deg, #68c586, #b99887)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                margin: 0,
-              }}>
-                The world is in
-              </p>
-
-              {/* "only one Reelm." — Single Line */}
+              {/* Main Headline (All caps, 2 rows) */}
               <h1 style={{
                 fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                fontSize: "clamp(26px, 4vw, 52px)",
+                fontSize: "clamp(36px, 5.2vw, 68px)",
                 fontWeight: 800,
-                lineHeight: 1.1,
-                letterSpacing: "-0.03em",
-                whiteSpace: "nowrap",
+                lineHeight: 0.98,
+                letterSpacing: "-0.035em",
+                textTransform: "uppercase",
                 margin: 0,
               }}>
-                <span style={{ color: "#b99887" }}>only one </span>
+                <span style={{ display: "block", color: "#f5e6de" }}>
+                  BRING YOUR
+                </span>
                 <span style={{
-                  background: "linear-gradient(90deg, #b99887, #68c586)",
+                  display: "block",
+                  background: "linear-gradient(90deg, #b99887 0%, #88ab86 50%, #68c586 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                 }}>
-                  Reelm.
+                  FRIENDS TOGETHER.
                 </span>
               </h1>
 
+              {/* Subheading */}
               <p style={{
                 fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                fontSize: "clamp(14px, 1.5vw, 17px)",
-                color: "rgba(245, 230, 222, 0.78)",
-                lineHeight: 1.5,
-                maxWidth: "460px",
-                margin: "4px 0 10px",
+                fontSize: "clamp(15px, 1.8vw, 21px)",
+                fontWeight: 700,
+                letterSpacing: "-0.01em",
+                color: "#b99887",
+                margin: 0,
               }}>
-                Toplulukların, canlı ses odalarının, mesajların ve özel profil alanlarının birleştiği sakin ve samimi yeni alan.
+                The world is in only one Reelm.
+              </p>
+
+              {/* Short English Summary */}
+              <p style={{
+                fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                fontSize: "clamp(14px, 1.4vw, 17px)",
+                color: "rgba(245, 230, 222, 0.78)",
+                lineHeight: 1.55,
+                maxWidth: "460px",
+                margin: "4px 0 8px",
+              }}>
+                A serene, all-in-one digital space built for meaningful communities, fluid voice hangouts, rich conversations, and expressive profiles.
               </p>
 
               {/* Action Buttons */}
@@ -116,7 +116,7 @@ export default function Beginning() {
                   onMouseEnter={e => { e.currentTarget.style.filter = "brightness(1.1)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
                   onMouseLeave={e => { e.currentTarget.style.filter = "brightness(1)"; e.currentTarget.style.transform = "translateY(0)"; }}
                 >
-                  Web Betaya Gir ›
+                  Launch Web App ›
                 </Link>
 
                 <Link
@@ -139,7 +139,7 @@ export default function Beginning() {
                   onMouseEnter={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.16)"; e.currentTarget.style.borderColor = "rgba(185, 152, 135, 0.4)"; }}
                   onMouseLeave={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.08)"; e.currentTarget.style.borderColor = "rgba(185, 152, 135, 0.25)"; }}
                 >
-                  Desktop Sürümü
+                  Download App
                 </Link>
               </div>
             </div>
