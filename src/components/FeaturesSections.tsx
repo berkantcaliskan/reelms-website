@@ -46,12 +46,13 @@ export default function FeaturesSections() {
 
           <h2 style={{
             fontFamily: "var(--font-karla), 'Karla', sans-serif",
-            fontSize: "clamp(30px, 4vw, 46px)",
+            fontSize: "clamp(22px, 3.8vw, 42px)",
             fontWeight: 800,
-            lineHeight: 1.04,
+            lineHeight: 1.1,
             letterSpacing: "-0.03em",
             textTransform: "uppercase",
             color: "#f5e6de",
+            wordBreak: "break-word",
             margin: 0,
           }}>
             DROP IN, VIBE OUT, <br />
@@ -236,12 +237,13 @@ export default function FeaturesSections() {
 
           <h2 style={{
             fontFamily: "var(--font-karla), 'Karla', sans-serif",
-            fontSize: "clamp(30px, 4vw, 46px)",
+            fontSize: "clamp(22px, 3.8vw, 42px)",
             fontWeight: 800,
-            lineHeight: 1.04,
+            lineHeight: 1.1,
             letterSpacing: "-0.03em",
             textTransform: "uppercase",
             color: "#f5e6de",
+            wordBreak: "break-word",
             margin: 0,
           }}>
             NO CLUTTER. NO ADS. <br />
@@ -361,12 +363,13 @@ export default function FeaturesSections() {
       >
         <h2 style={{
           fontFamily: "var(--font-karla), 'Karla', sans-serif",
-          fontSize: "clamp(32px, 5vw, 56px)",
+          fontSize: "clamp(24px, 4.5vw, 48px)",
           fontWeight: 800,
-          lineHeight: 1.05,
-          letterSpacing: "-0.035em",
+          lineHeight: 1.1,
+          letterSpacing: "-0.03em",
           textTransform: "uppercase",
           color: "#fff",
+          wordBreak: "break-word",
           margin: 0,
         }}>
           YOUR NEXT DIGITAL SPACE <br />

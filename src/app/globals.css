@@ -127,4 +127,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-karla), 'Karla', sans-serif;
   font-weight: 800;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
