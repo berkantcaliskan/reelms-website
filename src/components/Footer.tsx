@@ -107,6 +107,7 @@ export default function Footer() {
             flexWrap: "wrap",
             gap: "12px",
           }}
+        >
           <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
             <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.85rem", fontWeight: 800, color: "var(--ta)", letterSpacing: "0.01em" }}>
               Reelms from Sun Intelligence
