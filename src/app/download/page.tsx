@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import Image from "next/image";
 import AmbientGradientBackground from "@/components/AmbientGradientBackground";
+import Footer from "@/components/Footer";
 
 export default function DownloadPage() {
   return (
@@ -18,7 +19,7 @@ export default function DownloadPage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: "4vh 24px 12vh",
+          padding: "4vh 24px 8vh",
           position: "relative",
           zIndex: 10,
         }}>
@@ -27,20 +28,19 @@ export default function DownloadPage() {
             {/* Heading */}
             <div style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "center" }}>
               <p style={{
-                fontFamily: "var(--font-jakarta), sans-serif",
-                fontSize: "11px",
-                fontWeight: 700,
+                fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                fontSize: "12px",
+                fontWeight: 800,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                color: "#b99887",
-                opacity: 0.4,
+                color: "#68c586",
               }}>
                 Desktop App
               </p>
               <h1 style={{
-                fontFamily: "var(--font-dela), sans-serif",
-                fontSize: "clamp(36px, 7vw, 72px)",
-                fontWeight: 400,
+                fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                fontSize: "clamp(32px, 6vw, 64px)",
+                fontWeight: 800,
                 lineHeight: 1.05,
                 margin: 0,
                 color: "#b99887",
@@ -156,6 +156,8 @@ export default function DownloadPage() {
 
           </div>
         </main>
+
+        <Footer />
       </div>
     </div>
   );

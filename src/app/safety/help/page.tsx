@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
+import AmbientGradientBackground from "@/components/AmbientGradientBackground";
+import Footer from "@/components/Footer";
 
 const sections = [
   {
@@ -116,35 +118,38 @@ export default function HelpPage() {
   };
 
   return (
-    <div style={{ background: "color-mix(in srgb, #b99887 10%, #0c0c20)", minHeight: "100vh" }}>
-      <Header />
+    <div style={{ minHeight: "100vh", position: "relative", overflowX: "hidden", backgroundColor: "#161314" }}>
+      <AmbientGradientBackground />
 
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "48px 24px 80px" }}>
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative", zIndex: 1 }}>
+        <Header />
 
-        {/* Full-width title */}
-        <h1 style={{
-          fontFamily: "var(--font-dela), sans-serif",
-          fontSize: "clamp(28px, 5vw, 44px)",
-          color: "#b99887",
-          fontWeight: 400,
-          marginBottom: "52px",
-        }}>
-          Reelms Help{" "}
-          <span style={{
-            background: "linear-gradient(90deg, #b99887, #68c586)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}>Center</span>
-        </h1>
+        <div style={{ flex: 1, maxWidth: "1100px", width: "100%", margin: "0 auto", padding: "48px 24px 80px" }}>
 
-        {/* Two-column layout */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 300px",
-          gap: "72px",
-          alignItems: "start",
-        }}>
+          {/* Full-width title */}
+          <h1 style={{
+            fontFamily: "var(--font-karla), 'Karla', sans-serif",
+            fontSize: "clamp(28px, 5vw, 44px)",
+            color: "#b99887",
+            fontWeight: 800,
+            marginBottom: "44px",
+          }}>
+            Reelms Help{" "}
+            <span style={{
+              background: "linear-gradient(90deg, #b99887, #68c586)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}>Center</span>
+          </h1>
+
+          {/* Two-column layout */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
+            gap: "clamp(36px, 5vw, 64px)",
+            alignItems: "start",
+          }}>
 
           {/* Left — FAQ sections */}
           <div style={{ display: "flex", flexDirection: "column", gap: "52px" }}>
@@ -309,6 +314,8 @@ export default function HelpPage() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

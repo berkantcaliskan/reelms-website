@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Header from "@/components/Header";
-
+import AmbientGradientBackground from "@/components/AmbientGradientBackground";
+import Footer from "@/components/Footer";
 
 const TOPICS = [
   "Spam",
@@ -18,12 +19,12 @@ const TOPICS = [
 const inputStyle: React.CSSProperties = {
   width: "100%",
   background: "rgba(185, 152, 135, 0.07)",
-  border: "1px solid rgba(185, 152, 135, 0.15)",
+  border: "1px solid rgba(185, 152, 135, 0.2)",
   borderRadius: "999px",
   padding: "13px 20px",
-  fontFamily: "var(--font-jakarta), sans-serif",
+  fontFamily: "var(--font-karla), 'Karla', sans-serif",
   fontSize: "14px",
-  color: "#b99887",
+  color: "#f5e6de",
   outline: "none",
   boxSizing: "border-box",
 };
@@ -68,34 +69,32 @@ export default function ReportPage() {
   const canSubmit = name.trim() && message.trim() && topic && (topic !== "Other" || customTopic.trim());
 
   return (
-    <div style={{ background: "color-mix(in srgb, #b99887 10%, #0c0c20)", minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
+    <div style={{ minHeight: "100vh", position: "relative", overflowX: "hidden", backgroundColor: "#161314" }}>
+      <AmbientGradientBackground />
 
-<div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative", zIndex: 1 }}>
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative", zIndex: 1 }}>
         <Header />
 
-        <main style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", padding: "10vh 24px 14vh", position: "relative", zIndex: 10 }}>
+        <main style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", padding: "6vh 24px 8vh", position: "relative", zIndex: 10 }}>
           <div style={{ width: "100%", maxWidth: "560px", display: "flex", flexDirection: "column", gap: "40px" }}>
 
             {/* Hero */}
             <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
               <p style={{
-                fontFamily: "var(--font-jakarta), sans-serif",
-                fontSize: "clamp(11px, 1.5vw, 13px)",
-                fontWeight: 700,
+                fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                fontSize: "12px",
+                fontWeight: 800,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                background: "linear-gradient(90deg, #68c586, #b99887)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
+                color: "#68c586",
               }}>
                 Safety &amp; Transparency
               </p>
 
               <h1 style={{
-                fontFamily: "var(--font-dela), sans-serif",
+                fontFamily: "var(--font-karla), 'Karla', sans-serif",
                 fontSize: "clamp(28px, 5.5vw, 48px)",
-                fontWeight: 400,
+                fontWeight: 800,
                 lineHeight: 1.08,
                 color: "#b99887",
                 margin: 0,

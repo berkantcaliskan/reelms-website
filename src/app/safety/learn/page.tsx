@@ -1,33 +1,33 @@
 import Header from "@/components/Header";
+import AmbientGradientBackground from "@/components/AmbientGradientBackground";
+import Footer from "@/components/Footer";
 
-const bg = "color-mix(in srgb, #b99887 10%, #0c0c20)";
 const accent = "#b99887";
 
 const sectionLabel: React.CSSProperties = {
-  fontFamily: "var(--font-jakarta), sans-serif",
+  fontFamily: "var(--font-karla), 'Karla', sans-serif",
   fontSize: "11px",
-  fontWeight: 700,
+  fontWeight: 800,
   letterSpacing: "0.18em",
   textTransform: "uppercase",
   color: accent,
-  opacity: 0.4,
-  marginBottom: "20px",
+  opacity: 0.6,
+  marginBottom: "16px",
 };
 
 const sectionTitle: React.CSSProperties = {
-  fontFamily: "var(--font-dela), sans-serif",
-  fontSize: "clamp(16px, 2vw, 20px)",
+  fontFamily: "var(--font-karla), 'Karla', sans-serif",
+  fontSize: "clamp(18px, 2.2vw, 22px)",
   color: accent,
-  fontWeight: 400,
-  marginBottom: "20px",
+  fontWeight: 800,
+  marginBottom: "16px",
 };
 
 const body: React.CSSProperties = {
-  fontFamily: "var(--font-jakarta), sans-serif",
+  fontFamily: "var(--font-karla), 'Karla', sans-serif",
   fontSize: "14px",
-  color: accent,
-  opacity: 0.65,
-  lineHeight: 1.85,
+  color: "rgba(245, 230, 222, 0.8)",
+  lineHeight: 1.8,
 };
 
 const pillars = [
@@ -59,29 +59,32 @@ const thirdParty = [
 
 export default function LearnPage() {
   return (
-    <div style={{ background: bg, minHeight: "100vh" }}>
-      <Header />
+    <div style={{ minHeight: "100vh", position: "relative", overflowX: "hidden", backgroundColor: "#161314" }}>
+      <AmbientGradientBackground />
 
-      <div style={{ maxWidth: "820px", margin: "0 auto", padding: "48px 24px 100px" }}>
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative", zIndex: 1 }}>
+        <Header />
 
-        {/* Page title */}
-        <p style={{ ...sectionLabel, marginBottom: "12px" }}>Safety &amp; Privacy</p>
-        <h1 style={{
-          fontFamily: "var(--font-dela), sans-serif",
-          fontSize: "clamp(24px, 4vw, 38px)",
-          color: accent,
-          fontWeight: 400,
-          marginBottom: "64px",
-          lineHeight: 1.25,
-        }}>
-          Deep Dive: Safety, Privacy<br />&amp; Data{" "}
-          <span style={{
-            background: "linear-gradient(90deg, #b99887, #68c586)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}>Governance</span>
-        </h1>
+        <div style={{ flex: 1, maxWidth: "820px", width: "100%", margin: "0 auto", padding: "48px 24px 80px" }}>
+
+          {/* Page title */}
+          <p style={{ ...sectionLabel, marginBottom: "12px", color: "#68c586" }}>Safety &amp; Privacy</p>
+          <h1 style={{
+            fontFamily: "var(--font-karla), 'Karla', sans-serif",
+            fontSize: "clamp(26px, 4.5vw, 42px)",
+            color: accent,
+            fontWeight: 800,
+            marginBottom: "52px",
+            lineHeight: 1.15,
+          }}>
+            Deep Dive: Safety, Privacy<br />&amp; Data{" "}
+            <span style={{
+              background: "linear-gradient(90deg, #b99887, #68c586)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}>Governance</span>
+          </h1>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "56px" }}>
 
@@ -445,6 +448,8 @@ export default function LearnPage() {
 
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

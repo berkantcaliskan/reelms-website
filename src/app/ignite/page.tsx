@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import CatParticles from "@/components/CatParticles";
 import AmbientGradientBackground from "@/components/AmbientGradientBackground";
+import Footer from "@/components/Footer";
 
 const features = [
   "Premium ecosystem upgrades",
@@ -21,17 +22,16 @@ export default function IgnitePage() {
         <CatParticles />
         <Header />
 
-        <main style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", paddingLeft: "24px", paddingRight: "24px", paddingTop: "12vh", paddingBottom: "12vh", textAlign: "center", gap: "0", position: "relative", zIndex: 10 }}>
+        <main style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", paddingLeft: "24px", paddingRight: "24px", paddingTop: "8vh", paddingBottom: "8vh", textAlign: "center", gap: "0", position: "relative", zIndex: 10 }}>
 
           {/* Reelms — small */}
           <p style={{
-            fontFamily: "var(--font-jakarta), sans-serif",
-            fontSize: "clamp(12px, 3vw, 20px)",
-            fontWeight: 700,
+            fontFamily: "var(--font-karla), 'Karla', sans-serif",
+            fontSize: "clamp(12px, 2vw, 16px)",
+            fontWeight: 800,
             letterSpacing: "0.15em",
             textTransform: "uppercase",
-            color: "#b99887",
-            opacity: 0.7,
+            color: "#68c586",
             marginBottom: "6px",
           }}>
             Reelms
@@ -41,54 +41,52 @@ export default function IgnitePage() {
           <h1
             className="ignite-text"
             style={{
-              fontFamily: "var(--font-dela), sans-serif",
-              fontSize: "clamp(48px, 10vw, 96px)",
-              fontWeight: 400,
+              fontFamily: "var(--font-karla), 'Karla', sans-serif",
+              fontSize: "clamp(42px, 9vw, 84px)",
+              fontWeight: 800,
+              letterSpacing: "-0.03em",
             }}
           >
             Ignite
           </h1>
 
           {/* Body text */}
-          <div style={{ maxWidth: "540px", marginTop: "52px", display: "flex", flexDirection: "column", gap: "24px" }}>
+          <div style={{ maxWidth: "560px", marginTop: "40px", display: "flex", flexDirection: "column", gap: "24px" }}>
             <p style={{
-              fontFamily: "var(--font-jakarta), sans-serif",
-              fontSize: "clamp(13px, 1.5vw, 15px)",
-              color: "#b99887",
-              opacity: 0.65,
-              lineHeight: 1.75,
+              fontFamily: "var(--font-karla), 'Karla', sans-serif",
+              fontSize: "clamp(14px, 1.5vw, 16px)",
+              color: "rgba(245, 230, 222, 0.8)",
+              lineHeight: 1.65,
             }}>
-              Reelms is currently in its Beta phase. During this period, Ignite features and all in-app purchases are not active. Reelms Ignite will be officially available here with the upcoming full release.
+              Reelms is currently in Beta. During this period, Ignite perks and in-app upgrades are unlocked for early testers. Reelms Ignite will be officially available with the upcoming full release.
             </p>
 
-            <div style={{ textAlign: "left" }}>
+            <div style={{ textAlign: "left", background: "rgba(24, 20, 22, 0.6)", border: "1px solid rgba(185, 152, 135, 0.18)", borderRadius: "20px", padding: "24px" }}>
               <p style={{
-                fontFamily: "var(--font-jakarta), sans-serif",
-                fontSize: "clamp(13px, 1.5vw, 15px)",
-                color: "#b99887",
-                opacity: 0.65,
-                lineHeight: 1.75,
+                fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                fontSize: "14px",
+                fontWeight: 700,
+                color: "var(--ta)",
                 marginBottom: "16px",
               }}>
-                Here are some of the exclusive features you will be able to unlock with Ignite soon:
+                Exclusive features you will unlock with Ignite:
               </p>
 
-              <ul style={{ listStyle: "none", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px 24px" }}>
+              <ul style={{ listStyle: "none", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: "12px 20px" }}>
                 {features.map((feature, i) => (
                   <li
                     key={i}
                     style={{
-                      fontFamily: "var(--font-jakarta), sans-serif",
-                      fontSize: "clamp(13px, 1.5vw, 15px)",
-                      color: "#b99887",
-                      opacity: 0.5,
+                      fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                      fontSize: "13px",
+                      color: "rgba(245, 230, 222, 0.75)",
                       display: "flex",
                       alignItems: "flex-start",
                       gap: "8px",
-                      lineHeight: 1.6,
+                      lineHeight: 1.5,
                     }}
                   >
-                    <span style={{ flexShrink: 0, opacity: 0.6 }}>•</span>
+                    <span style={{ flexShrink: 0, color: "#68c586", fontWeight: 800 }}>✦</span>
                     {feature}
                   </li>
                 ))}
@@ -96,6 +94,8 @@ export default function IgnitePage() {
             </div>
           </div>
         </main>
+
+        <Footer />
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 "use client";
 
 import Header from "@/components/Header";
+import AmbientGradientBackground from "@/components/AmbientGradientBackground";
+import Footer from "@/components/Footer";
 
 
 const commitments = [
@@ -80,19 +82,18 @@ const sovereignty = [
 ];
 
 const body: React.CSSProperties = {
-  fontFamily: "var(--font-jakarta), sans-serif",
-  fontSize: "clamp(13px, 1.4vw, 15px)",
-  color: "#b99887",
-  opacity: 0.65,
+  fontFamily: "var(--font-karla), 'Karla', sans-serif",
+  fontSize: "clamp(14px, 1.4vw, 16px)",
+  color: "rgba(245, 230, 222, 0.8)",
   lineHeight: 1.8,
 };
 
 const sectionTitle: React.CSSProperties = {
-  fontFamily: "var(--font-dela), sans-serif",
-  fontSize: "clamp(18px, 2.5vw, 24px)",
-  fontWeight: 400,
+  fontFamily: "var(--font-karla), 'Karla', sans-serif",
+  fontSize: "clamp(20px, 2.5vw, 26px)",
+  fontWeight: 800,
   color: "#b99887",
-  marginBottom: "28px",
+  marginBottom: "24px",
 };
 
 const divider: React.CSSProperties = {
@@ -104,12 +105,13 @@ const divider: React.CSSProperties = {
 
 export default function RadicalPrivacyPage() {
   return (
-    <div style={{ background: "color-mix(in srgb, #b99887 10%, #0c0c20)", minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
+    <div style={{ minHeight: "100vh", position: "relative", overflowX: "hidden", backgroundColor: "#161314" }}>
+      <AmbientGradientBackground />
 
-<div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative", zIndex: 1 }}>
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative", zIndex: 1 }}>
         <Header />
 
-        <main style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", padding: "10vh 24px 14vh", position: "relative", zIndex: 10 }}>
+        <main style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", padding: "6vh 24px 8vh", position: "relative", zIndex: 10 }}>
           <div style={{ width: "100%", maxWidth: "680px", display: "flex", flexDirection: "column", gap: "56px" }}>
 
             {/* Hero */}
@@ -354,6 +356,8 @@ export default function RadicalPrivacyPage() {
 
           </div>
         </main>
+
+        <Footer />
       </div>
     </div>
   );
