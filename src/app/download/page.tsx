@@ -164,8 +164,7 @@ export default function DownloadPage() {
             >
               {/* 1. Windows Download Pill (Primary Active) */}
               <a
-                href="/downloads/Reelms.exe"
-                download="Reelms.exe"
+                href="/api/download/windows"
                 style={{
                   display: "flex",
                   alignItems: "center",
