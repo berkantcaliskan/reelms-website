@@ -9,57 +9,117 @@
   --tg-rgb: 104, 197, 134;
 }
 
-@keyframes orb-float-1 {
-  0%   { transform: translate(0px, 0px) scale(1); }
-  33%  { transform: translate(70px, 90px) scale(1.1); }
-  66%  { transform: translate(-50px, 130px) scale(0.95); }
-  100% { transform: translate(0px, 0px) scale(1); }
+@keyframes wave-morph-1 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  33% {
+    transform: translate(80px, 60px) scale(1.15) rotate(45deg);
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  66% {
+    transform: translate(-60px, 90px) scale(0.92) rotate(90deg);
+    border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
 }
 
-@keyframes orb-float-2 {
-  0%   { transform: translate(0px, 0px) scale(1); }
-  33%  { transform: translate(-140px, 110px) scale(1.15); }
-  66%  { transform: translate(-70px, -80px) scale(0.9); }
-  100% { transform: translate(0px, 0px) scale(1); }
+@keyframes wave-morph-2 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    border-radius: 40% 60% 60% 40% / 60% 40% 50% 50%;
+  }
+  33% {
+    transform: translate(-100px, 80px) scale(1.2) rotate(-35deg);
+    border-radius: 70% 30% 40% 60% / 40% 60% 50% 50%;
+  }
+  66% {
+    transform: translate(-50px, -60px) scale(0.9) rotate(40deg);
+    border-radius: 40% 60% 70% 30% / 60% 30% 60% 40%;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    border-radius: 40% 60% 60% 40% / 60% 40% 50% 50%;
+  }
 }
 
-@keyframes orb-float-3 {
-  0%   { transform: translate(0px, 0px) scale(1); }
-  33%  { transform: translate(-110px, -130px) scale(1.12); }
-  66%  { transform: translate(80px, -70px) scale(0.95); }
-  100% { transform: translate(0px, 0px) scale(1); }
+@keyframes wave-morph-3 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    border-radius: 50% 50% 40% 60% / 40% 60% 50% 50%;
+  }
+  33% {
+    transform: translate(-80px, -90px) scale(1.18) rotate(50deg);
+    border-radius: 60% 40% 30% 70% / 70% 30% 60% 40%;
+  }
+  66% {
+    transform: translate(70px, -50px) scale(0.94) rotate(-30deg);
+    border-radius: 30% 70% 60% 40% / 50% 50% 30% 70%;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    border-radius: 50% 50% 40% 60% / 40% 60% 50% 50%;
+  }
 }
 
-@keyframes orb-float-4 {
-  0%   { transform: translate(0px, 0px) scale(1); }
-  33%  { transform: translate(90px, -70px) scale(1.08); }
-  66%  { transform: translate(-60px, 50px) scale(0.92); }
-  100% { transform: translate(0px, 0px) scale(1); }
+@keyframes wave-morph-4 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+  }
+  33% {
+    transform: translate(80px, -60px) scale(1.12) rotate(-45deg);
+    border-radius: 40% 60% 70% 30% / 60% 40% 60% 40%;
+  }
+  66% {
+    transform: translate(-50px, 40px) scale(0.9) rotate(35deg);
+    border-radius: 60% 40% 30% 70% / 40% 60% 30% 70%;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+  }
+}
+
+@keyframes gradient-wave-flow {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+    filter: blur(65px) hue-rotate(0deg);
+  }
+  50% {
+    transform: translate(45px, -35px) rotate(4deg) scale(1.08);
+    filter: blur(80px) hue-rotate(8deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+    filter: blur(65px) hue-rotate(0deg);
+  }
 }
 
 .ambient-orb-1 {
-  animation: orb-float-1 24s ease-in-out infinite alternate;
+  animation: wave-morph-1 16s ease-in-out infinite alternate;
+  will-change: transform, border-radius;
 }
 .ambient-orb-2 {
-  animation: orb-float-2 28s ease-in-out infinite alternate;
+  animation: wave-morph-2 20s ease-in-out infinite alternate;
+  will-change: transform, border-radius;
 }
 .ambient-orb-3 {
-  animation: orb-float-3 22s ease-in-out infinite alternate;
+  animation: wave-morph-3 15s ease-in-out infinite alternate;
+  will-change: transform, border-radius;
 }
 .ambient-orb-4 {
-  animation: orb-float-4 26s ease-in-out infinite alternate;
-}
-
-@keyframes mesh-drift {
-  0%   { transform: translate(0px, 0px) rotate(0deg) scale(1); }
-  33%  { transform: translate(30px, -25px) rotate(2deg) scale(1.04); }
-  66%  { transform: translate(-25px, 30px) rotate(-1.5deg) scale(0.98); }
-  100% { transform: translate(0px, 0px) rotate(0deg) scale(1); }
+  animation: wave-morph-4 18s ease-in-out infinite alternate;
+  will-change: transform, border-radius;
 }
 
 .ambient-mesh-canvas {
-  animation: mesh-drift 25s ease-in-out infinite alternate;
-  will-change: transform;
+  animation: gradient-wave-flow 18s ease-in-out infinite alternate;
+  will-change: transform, filter;
 }
 
 * {
