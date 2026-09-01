@@ -2,6 +2,7 @@
 
 import Header from "@/components/Header";
 import CatParticles from "@/components/CatParticles";
+import AmbientGradientBackground from "@/components/AmbientGradientBackground";
 
 const features = [
   "Premium ecosystem upgrades",
@@ -13,15 +14,8 @@ const features = [
 
 export default function IgnitePage() {
   return (
-    <div className="animated-reelms-bg" style={{ minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
-
-      <img
-        src="/landinglight.svg"
-        alt=""
-        aria-hidden="true"
-        className="light-beam"
-        style={{ position: "absolute", top: "35vh", left: "50%", transform: "translateX(-50%)", width: "110vw", maxWidth: "1100px", height: "auto", pointerEvents: "none", zIndex: 0 }}
-      />
+    <div style={{ minHeight: "100vh", position: "relative", overflowX: "hidden", backgroundColor: "#161314" }}>
+      <AmbientGradientBackground />
 
       <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative", zIndex: 1 }}>
         <CatParticles />

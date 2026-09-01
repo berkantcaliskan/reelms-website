@@ -4,18 +4,12 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import CatParticles from "@/components/CatParticles";
 import AppPreviewShowcase from "@/components/AppPreviewShowcase";
+import AmbientGradientBackground from "@/components/AmbientGradientBackground";
 
 export default function Beginning() {
   return (
-    <div className="animated-reelms-bg" style={{ position: "relative", overflowX: "hidden", minHeight: "100vh" }}>
-
-      <img
-        src="/landinglight.svg"
-        alt=""
-        aria-hidden="true"
-        className="light-beam"
-        style={{ position: "absolute", top: "25vh", left: "50%", transform: "translateX(-50%)", width: "110vw", maxWidth: "1100px", height: "auto", pointerEvents: "none", zIndex: 0 }}
-      />
+    <div style={{ position: "relative", overflowX: "hidden", minHeight: "100vh", backgroundColor: "#161314" }}>
+      <AmbientGradientBackground />
 
       {/* First viewport */}
       <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative", zIndex: 1 }}>
