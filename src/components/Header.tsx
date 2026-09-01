@@ -62,20 +62,20 @@ export default function Header() {
         style={{ padding: "20px 23px 20px 22px", display: "flex", alignItems: "center", justifyContent: "space-between", position: "relative", zIndex: 200 }}
       >
         {/* Logo */}
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none", cursor: "pointer" }}>
+        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "11px", textDecoration: "none", cursor: "pointer" }}>
           <Image
             src="/reelms-logo.svg"
             alt="Reelms"
-            width={44}
-            height={44}
+            width={40}
+            height={40}
             style={{ flexShrink: 0, objectFit: "contain" }}
           />
           <span style={{
             fontFamily: "var(--font-karla), 'Karla', sans-serif",
-            fontSize: "1.45rem",
+            fontSize: "1.28rem",
             fontWeight: 800,
             color: "var(--ta)",
-            letterSpacing: "0.12em",
+            letterSpacing: "0.14em",
             textTransform: "uppercase",
           }}>
             REELMS
@@ -273,16 +273,16 @@ export default function Header() {
                   <Image
                     src="/reelms-logo.svg"
                     alt="Reelms"
-                    width={36}
-                    height={36}
+                    width={32}
+                    height={32}
                     style={{ objectFit: "contain" }}
                   />
                   <span style={{
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                    fontSize: "1.2rem",
+                    fontSize: "1.08rem",
                     fontWeight: 800,
                     color: "var(--ta)",
-                    letterSpacing: "0.12em",
+                    letterSpacing: "0.14em",
                     textTransform: "uppercase",
                   }}>
                     REELMS
