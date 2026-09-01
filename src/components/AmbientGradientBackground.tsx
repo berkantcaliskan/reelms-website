@@ -127,6 +127,19 @@ export default function AmbientGradientBackground() {
         }}
       />
 
+      {/* ── Layer 2.5: Contrast Comfort Dim Overlay (Enhance Typography Readability) ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          background: "radial-gradient(ellipse 90% 80% at 50% 40%, rgba(22, 19, 20, 0.42) 0%, rgba(18, 15, 17, 0.65) 100%)",
+          pointerEvents: "none",
+        }}
+      />
+
       {/* ── Layer 3: Direct Pixel-Level Micro Film Grain (Guaranteed Visibility & Ultra-Fine) ── */}
       {grainDataUrl && (
         <div
