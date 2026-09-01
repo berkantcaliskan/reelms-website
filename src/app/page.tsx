@@ -6,7 +6,7 @@ import CatParticles from "@/components/CatParticles";
 
 export default function Beginning() {
   return (
-    <div style={{ background: "color-mix(in srgb, #b99887 10%, #0c0c20)", position: "relative", overflowX: "hidden" }}>
+    <div className="animated-reelms-bg" style={{ position: "relative", overflowX: "hidden", minHeight: "100vh" }}>
 
       <img
         src="/landinglight.svg"

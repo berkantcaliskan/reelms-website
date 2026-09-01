@@ -13,7 +13,7 @@ const features = [
 
 export default function IgnitePage() {
   return (
-    <div style={{ background: "color-mix(in srgb, #b99887 10%, #0c0c20)", minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
+    <div className="animated-reelms-bg" style={{ minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
 
       <img
         src="/landinglight.svg"

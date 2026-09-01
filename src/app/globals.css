@@ -3,68 +3,47 @@
 :root {
   --ta: #b99887;
   --ta-rgb: 185, 152, 135;
-  --tb: #0c0c20;
-  --tb-rgb: 12, 12, 32;
+  --tb: #181416;
+  --tb-rgb: 24, 20, 22;
+  --tg: #68c586;
+  --tg-rgb: 104, 197, 134;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(var(--ta-rgb), 0.15) transparent;
+@keyframes reelms-mesh-flow {
+  0% {
+    background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%;
+  }
+  25% {
+    background-position: 15% 10%, 80% 25%, 85% 75%, 15% 85%, 20% 40%;
+  }
+  50% {
+    background-position: 30% 20%, 65% 45%, 70% 90%, 25% 65%, 40% 60%;
+  }
+  75% {
+    background-position: 10% 30%, 90% 20%, 60% 80%, 20% 70%, 15% 30%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%;
+  }
 }
 
-*::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-}
-*::-webkit-scrollbar-track {
-  background: transparent;
-  margin: 8px;
-}
-*::-webkit-scrollbar-thumb {
-  background: rgba(var(--ta-rgb), 0.18);
-  border-radius: 999px;
-  border: 1.5px solid transparent;
-  background-clip: content-box;
-}
-
-@keyframes p-in  { from { opacity: 0;    } to { opacity: 0.13; } }
-@keyframes p-out { from { opacity: 0.13; } to { opacity: 0;    } }
-
-@keyframes light-drift {
-  0%   { transform: translateX(-50%) translate(  0px,   0px); }
-  20%  { transform: translateX(-50%) translate(  7px,  -9px); }
-  45%  { transform: translateX(-50%) translate( -9px,   6px); }
-  70%  { transform: translateX(-50%) translate(  5px,  10px); }
-  100% { transform: translateX(-50%) translate(  0px,   0px); }
-}
-
-.light-beam {
-  animation: light-drift 8s ease-in-out infinite;
-}
-
-@keyframes ignite-rainbow {
-  0%   { background-position: 0% center; }
-  100% { background-position: 300% center; }
-}
-
-.ignite-text {
-  background: linear-gradient(90deg, #ff6b6b, #ffb347, #ffd700, #90ee90, #87ceeb, #b39ddb, #ff6b6b);
-  background-size: 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: ignite-rainbow 4s linear infinite;
-  padding-bottom: 0.25em;
-  line-height: 1.15;
+.animated-reelms-bg {
+  background-color: #181416;
+  background-image:
+    radial-gradient(circle at 10% 12%, rgba(24, 20, 22, 0.98) 0%, rgba(35, 28, 31, 0.90) 30%, transparent 65%),
+    radial-gradient(circle at 38% 35%, rgba(65, 50, 54, 0.55) 0%, rgba(45, 36, 39, 0.40) 40%, transparent 70%),
+    radial-gradient(circle at 82% 25%, rgba(185, 152, 135, 0.28) 0%, rgba(185, 152, 135, 0.08) 45%, transparent 70%),
+    radial-gradient(circle at 75% 85%, rgba(104, 197, 134, 0.22) 0%, rgba(104, 197, 134, 0.06) 45%, transparent 70%),
+    linear-gradient(135deg, #181416 0%, #251d20 28%, #36292d 52%, rgba(185, 152, 135, 0.16) 74%, rgba(104, 197, 134, 0.14) 100%);
+  background-size: 150% 150%, 160% 160%, 170% 170%, 160% 160%, 100% 100%;
+  animation: reelms-mesh-flow 24s ease-in-out infinite alternate;
 }
 
 body {
   font-family: var(--font-jakarta), sans-serif;
   min-height: 100vh;
   color: var(--ta);
+  background-color: #181416;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
