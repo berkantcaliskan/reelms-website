@@ -10,8 +10,8 @@ export default function Footer() {
         borderTop: "1px solid rgba(185, 152, 135, 0.15)",
         background: "rgba(18, 14, 16, 0.85)",
         backdropFilter: "blur(20px)",
-        padding: "60px 24px 40px",
-        marginTop: "60px",
+        padding: "clamp(40px, 5vw, 60px) clamp(16px, 3vw, 24px) 36px",
+        marginTop: "clamp(40px, 6vw, 70px)",
         position: "relative",
         zIndex: 10,
       }}
@@ -22,15 +22,15 @@ export default function Footer() {
           margin: "0 auto",
           display: "flex",
           flexDirection: "column",
-          gap: "40px",
+          gap: "36px",
         }}
       >
         {/* Top Brand & Links Grid */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "36px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 160px), 1fr))",
+            gap: "clamp(24px, 4vw, 36px)",
             justifyContent: "space-between",
           }}
         >

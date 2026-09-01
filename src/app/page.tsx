@@ -23,10 +23,10 @@ export default function Beginning() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          paddingLeft: "clamp(20px, 4vw, 48px)",
-          paddingRight: "clamp(20px, 4vw, 48px)",
+          paddingLeft: "clamp(16px, 4vw, 48px)",
+          paddingRight: "clamp(16px, 4vw, 48px)",
           paddingTop: "2vh",
-          paddingBottom: "10vh",
+          paddingBottom: "8vh",
           position: "relative",
           zIndex: 10,
           width: "100%",
@@ -35,8 +35,8 @@ export default function Beginning() {
         }}>
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "clamp(32px, 5vw, 64px)",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+            gap: "clamp(28px, 4.5vw, 64px)",
             alignItems: "center",
             width: "100%",
           }}>
@@ -51,7 +51,7 @@ export default function Beginning() {
               {/* Main Headline (All caps, strictly 2 rows) */}
               <h1 style={{
                 fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                fontSize: "clamp(28px, 3.8vw, 48px)",
+                fontSize: "clamp(26px, 5.8vw, 48px)",
                 fontWeight: 800,
                 lineHeight: 1.05,
                 letterSpacing: "-0.035em",

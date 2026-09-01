@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function FeaturesSections() {
   return (
-    <div style={{ width: "100%", maxWidth: "1240px", margin: "0 auto", padding: "40px 24px 100px", display: "flex", flexDirection: "column", gap: "90px" }}>
+    <div style={{ width: "100%", maxWidth: "1240px", margin: "0 auto", padding: "clamp(24px, 4vw, 40px) clamp(16px, 3vw, 24px) clamp(60px, 8vw, 100px)", display: "flex", flexDirection: "column", gap: "clamp(48px, 7vw, 90px)" }}>
 
       {/* ══════════════════════════════════════════════════════════════════════
           FEATURE 1: FOR FRIENDS & GAMING SQUADS (Drop In / Voice / Co-Listen)
@@ -22,11 +22,11 @@ export default function FeaturesSections() {
           WebkitBackdropFilter: "blur(28px)",
           border: "1px solid rgba(185, 152, 135, 0.18)",
           borderRadius: "28px",
-          padding: "clamp(32px, 5vw, 60px)",
+          padding: "clamp(24px, 4vw, 56px)",
           boxShadow: "0 20px 60px rgba(0, 0, 0, 0.4)",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: "48px",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+          gap: "clamp(28px, 4vw, 48px)",
           alignItems: "center",
           position: "relative",
           overflow: "hidden",
@@ -144,11 +144,11 @@ export default function FeaturesSections() {
           WebkitBackdropFilter: "blur(28px)",
           border: "1px solid rgba(185, 152, 135, 0.18)",
           borderRadius: "28px",
-          padding: "clamp(32px, 5vw, 60px)",
+          padding: "clamp(24px, 4vw, 56px)",
           boxShadow: "0 20px 60px rgba(0, 0, 0, 0.4)",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: "48px",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+          gap: "clamp(28px, 4vw, 48px)",
           alignItems: "center",
           position: "relative",
           overflow: "hidden",
