@@ -130,14 +130,31 @@ export default function Header() {
                         key={sh}
                         href={sh}
                         onClick={() => setOpenSub(null)}
-                        style={{ ...linkStyle, fontSize: "0.8rem", opacity: 0.5, position: "relative" }}
+                        style={{
+                          ...linkStyle,
+                          fontSize: "0.82rem",
+                          opacity: 0.55,
+                          display: "inline-flex",
+                          alignItems: "flex-start",
+                          gap: "5px",
+                        }}
                         onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-                        onMouseLeave={e => (e.currentTarget.style.opacity = "0.5")}
+                        onMouseLeave={e => (e.currentTarget.style.opacity = "0.55")}
                       >
-                        <span style={{ position: "absolute", right: "calc(100% + 4px)", top: "-1px", fontFamily: "var(--font-jakarta), sans-serif", fontSize: "0.55rem", opacity: 0.6, lineHeight: 1 }}>
+                        <span
+                          style={{
+                            fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                            fontSize: "0.58rem",
+                            fontWeight: 800,
+                            opacity: 0.6,
+                            lineHeight: 1,
+                            marginTop: "-1px",
+                            color: "var(--ta)",
+                          }}
+                        >
                           {String(idx + 1).padStart(2, "0")}
                         </span>
-                        {sl}
+                        <span>{sl}</span>
                       </Link>
                     ))}
                   </div>
@@ -365,17 +382,27 @@ export default function Header() {
                               onClick={() => { setOpen(false); setOpenSub(null); }}
                               style={{
                                 ...linkStyle,
-                                fontSize: "0.82rem",
-                                opacity: 0.55,
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "8px",
+                                fontSize: "0.84rem",
+                                opacity: 0.6,
+                                display: "inline-flex",
+                                alignItems: "flex-start",
+                                gap: "6px",
                               }}
                               onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-                              onMouseLeave={e => (e.currentTarget.style.opacity = "0.55")}
+                              onMouseLeave={e => (e.currentTarget.style.opacity = "0.6")}
                             >
-                              <span style={{ fontFamily: "var(--font-jakarta), sans-serif", fontSize: "0.65rem", opacity: 0.6 }}>
-                                {String(idx + 1).padStart(2, "0")}.
+                              <span
+                                style={{
+                                  fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                                  fontSize: "0.58rem",
+                                  fontWeight: 800,
+                                  opacity: 0.6,
+                                  lineHeight: 1,
+                                  marginTop: "-1px",
+                                  color: "var(--ta)",
+                                }}
+                              >
+                                {String(idx + 1).padStart(2, "0")}
                               </span>
                               <span>{sl}</span>
                             </Link>
