@@ -46,21 +46,22 @@ export default function Beginning() {
               textAlign: "left",
               gap: "16px",
             }}>
-              {/* Main Headline (All caps, 2 rows) */}
+              {/* Main Headline (All caps, strictly 2 rows) */}
               <h1 style={{
                 fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                fontSize: "clamp(36px, 5.2vw, 68px)",
+                fontSize: "clamp(28px, 3.8vw, 48px)",
                 fontWeight: 800,
-                lineHeight: 0.98,
+                lineHeight: 1.05,
                 letterSpacing: "-0.035em",
                 textTransform: "uppercase",
                 margin: 0,
               }}>
-                <span style={{ display: "block", color: "#f5e6de" }}>
+                <span style={{ display: "block", color: "#f5e6de", whiteSpace: "nowrap" }}>
                   BRING YOUR
                 </span>
                 <span style={{
                   display: "block",
+                  whiteSpace: "nowrap",
                   background: "linear-gradient(90deg, #b99887 0%, #88ab86 50%, #68c586 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
