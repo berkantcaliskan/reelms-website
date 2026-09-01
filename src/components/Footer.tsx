@@ -107,10 +107,14 @@ export default function Footer() {
             flexWrap: "wrap",
             gap: "12px",
           }}
-        >
-          <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(245, 230, 222, 0.5)" }}>
-            © {new Date().getFullYear()} Reelms. Built for meaningful spaces.
-          </span>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+            <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.85rem", fontWeight: 800, color: "var(--ta)", letterSpacing: "0.01em" }}>
+              Reelms from Sun Intelligence
+            </span>
+            <span style={{ color: "rgba(245, 230, 222, 0.4)", fontSize: "0.78rem" }}>
+              • © {new Date().getFullYear()}
+            </span>
+          </div>
           <div style={{ display: "flex", gap: "20px" }}>
             <Link href="/safety/privacy" style={{ color: "rgba(245, 230, 222, 0.5)", textDecoration: "none", fontSize: "0.78rem" }}>
               Privacy
