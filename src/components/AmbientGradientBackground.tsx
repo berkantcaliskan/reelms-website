@@ -109,16 +109,16 @@ export default function AmbientGradientBackground() {
           inset: 0,
           width: "100%",
           height: "100%",
-          opacity: 0.05,
-          mixBlendMode: "screen",
+          opacity: 0.095,
+          mixBlendMode: "overlay",
           pointerEvents: "none",
         }}
       >
         <filter id="reelms-grain">
           <feTurbulence
             type="fractalNoise"
-            baseFrequency="0.75"
-            numOctaves="3"
+            baseFrequency="0.82"
+            numOctaves="4"
             stitchTiles="stitch"
           />
           <feColorMatrix type="saturate" values="0" />
