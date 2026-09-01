@@ -101,22 +101,30 @@ export default function AmbientGradientBackground() {
         }}
       />
 
-      {/* ── Layer 3: Ultra-Fine Micro Film Grain Overlay ── */}
-      <div
+      {/* ── Layer 3: Film Grain Noise Texture (1:1 Pixel Sharp Vector Filter) ── */}
+      <svg
         aria-hidden="true"
         style={{
           position: "absolute",
           inset: 0,
           width: "100%",
           height: "100%",
-          pointerEvents: "none",
-          opacity: 0.075,
+          opacity: 0.16,
           mixBlendMode: "overlay",
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='microGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23microGrain)'/%3E%3C/svg%3E")`,
-          backgroundSize: "90px 90px",
-          backgroundRepeat: "repeat",
+          pointerEvents: "none",
         }}
-      />
+      >
+        <filter id="reelms-grain-sharp">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="1.15"
+            numOctaves="3"
+            stitchTiles="stitch"
+          />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#reelms-grain-sharp)" />
+      </svg>
     </div>
   );
 }
