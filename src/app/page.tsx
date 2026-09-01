@@ -50,30 +50,33 @@ export default function Beginning() {
               flexDirection: "column",
               alignItems: "flex-start",
               textAlign: "left",
-              gap: "16px",
+              gap: "14px",
             }}>
               {/* "THE WORLD IS IN" */}
               <p style={{
                 fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                fontSize: "clamp(12px, 2vw, 18px)",
+                fontSize: "clamp(12px, 1.8vw, 16px)",
                 fontWeight: 800,
-                letterSpacing: "0.15em",
+                letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 background: "linear-gradient(90deg, #68c586, #b99887)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
+                margin: 0,
               }}>
                 The world is in
               </p>
 
-              {/* "only one Reelm." */}
+              {/* "only one Reelm." — Single Line */}
               <h1 style={{
                 fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                fontSize: "clamp(38px, 6vw, 76px)",
+                fontSize: "clamp(26px, 4vw, 52px)",
                 fontWeight: 800,
-                lineHeight: 1.02,
-                letterSpacing: "-0.035em",
+                lineHeight: 1.1,
+                letterSpacing: "-0.03em",
+                whiteSpace: "nowrap",
+                margin: 0,
               }}>
                 <span style={{ color: "#b99887" }}>only one </span>
                 <span style={{
@@ -88,11 +91,11 @@ export default function Beginning() {
 
               <p style={{
                 fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                fontSize: "clamp(15px, 1.6vw, 18px)",
+                fontSize: "clamp(14px, 1.5vw, 17px)",
                 color: "rgba(245, 230, 222, 0.78)",
                 lineHeight: 1.5,
                 maxWidth: "460px",
-                margin: "4px 0 12px",
+                margin: "4px 0 10px",
               }}>
                 Toplulukların, canlı ses odalarının, mesajların ve özel profil alanlarının birleştiği sakin ve samimi yeni alan.
               </p>
