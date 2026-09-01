@@ -17,7 +17,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Reelms",
+  title: "Reelms for Communities",
   description: "Reelms — your space.",
 };
 
