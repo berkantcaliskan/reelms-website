@@ -247,6 +247,56 @@ export default function IgnitePage() {
     return val;
   };
 
+  const getTierDetails = (tier: "free" | "ignite" | "igniteAll") => {
+    switch (tier) {
+      case "free":
+        return {
+          title: "Free",
+          price: "$0",
+          period: "/ forever",
+          desc: "Essential squad communication.",
+          btnText: "Start Free",
+          btnHref: "https://app.reelms.io",
+          isHighlighted: false,
+        };
+      case "ignite":
+        return {
+          title: "Ignite",
+          price: isYearly ? "$3.99" : "$4.99",
+          period: "/ month",
+          desc: "4K streaming & 1 Server Boost.",
+          btnText: "Get Ignite",
+          btnHref: null,
+          isHighlighted: false,
+        };
+      case "igniteAll":
+        return {
+          title: "Ignite All",
+          price: isYearly ? "$7.99" : "$9.99",
+          period: "/ month",
+          desc: "Unlimited + 1 Monthly Boost.",
+          btnText: "Get Ignite All",
+          btnHref: null,
+          isHighlighted: true,
+        };
+    }
+  };
+
+  const getMobileKeys = () => {
+    switch (mobileCompare) {
+      case "free-ignite":
+        return { left: "free" as const, right: "ignite" as const };
+      case "ignite-all":
+        return { left: "ignite" as const, right: "igniteAll" as const };
+      case "free-all":
+        return { left: "free" as const, right: "igniteAll" as const };
+    }
+  };
+
+  const mobileKeys = getMobileKeys();
+  const leftTier = getTierDetails(mobileKeys.left);
+  const rightTier = getTierDetails(mobileKeys.right);
+
   return (
     <div style={{ minHeight: "100vh", position: "relative", overflowX: "hidden", backgroundColor: "#161314" }}>
       <AmbientGradientBackground />
@@ -260,7 +310,7 @@ export default function IgnitePage() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            padding: "clamp(36px, 6vh, 64px) clamp(20px, 4vw, 56px) clamp(60px, 8vh, 100px)",
+            padding: "clamp(32px, 5vh, 64px) clamp(16px, 3vw, 48px) clamp(60px, 8vh, 100px)",
             position: "relative",
             zIndex: 10,
             maxWidth: "1280px",
@@ -274,15 +324,15 @@ export default function IgnitePage() {
           <section
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 480px), 1fr))",
-              gap: "clamp(36px, 5vw, 64px)",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 460px), 1fr))",
+              gap: "clamp(32px, 4vw, 64px)",
               alignItems: "center",
               width: "100%",
-              marginBottom: "clamp(60px, 8vh, 100px)",
+              marginBottom: "clamp(48px, 7vh, 96px)",
             }}
           >
             {/* ── Left Column: Reelms / Ignite / and Ignite All with Real Fire Flame Canvas ── */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "22px", textAlign: "left" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px", textAlign: "left", width: "100%" }}>
               {/* Eyebrow badge */}
               <div
                 style={{
@@ -312,7 +362,7 @@ export default function IgnitePage() {
               </div>
 
               {/* Title with REAL Dynamic Particle Fire Simulation Burning Behind */}
-              <div style={{ position: "relative", display: "inline-block", width: "fit-content" }}>
+              <div style={{ position: "relative", display: "inline-block", width: "fit-content", maxWidth: "100%" }}>
                 {/* 60fps Real Fire Physics Particle Canvas */}
                 <RealFireCanvas width={520} height={220} />
 
@@ -321,7 +371,7 @@ export default function IgnitePage() {
                   <span
                     style={{
                       fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                      fontSize: "clamp(18px, 2.4vw, 24px)",
+                      fontSize: "clamp(16px, 2.2vw, 24px)",
                       fontWeight: 800,
                       letterSpacing: "0.15em",
                       textTransform: "uppercase",
@@ -337,7 +387,7 @@ export default function IgnitePage() {
                     className="ignite-flowing-gradient"
                     style={{
                       fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                      fontSize: "clamp(48px, 8vw, 88px)",
+                      fontSize: "clamp(44px, 7.5vw, 84px)",
                       fontWeight: 800,
                       lineHeight: 0.94,
                       letterSpacing: "-0.04em",
@@ -352,7 +402,7 @@ export default function IgnitePage() {
                   <span
                     style={{
                       fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                      fontSize: "clamp(26px, 4.5vw, 48px)",
+                      fontSize: "clamp(24px, 4.2vw, 48px)",
                       fontWeight: 800,
                       lineHeight: 1.1,
                       letterSpacing: "-0.03em",
@@ -370,27 +420,27 @@ export default function IgnitePage() {
               </div>
 
               {/* Tier Introductions Overview */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px", marginTop: "6px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginTop: "4px" }}>
                 {/* Ignite Overview */}
                 <div
                   style={{
                     background: "rgba(32, 25, 29, 0.75)",
                     border: "1px solid rgba(185, 152, 135, 0.25)",
                     borderRadius: "16px",
-                    padding: "16px 20px",
+                    padding: "16px 18px",
                     backdropFilter: "blur(18px)",
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
                     <SparkIcon size={16} color="#b99887" />
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1rem", fontWeight: 800, color: "#ffffff" }}>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.98rem", fontWeight: 800, color: "#ffffff" }}>
                       Reelms Ignite
                     </span>
                     <span style={{ fontSize: "0.7rem", fontWeight: 800, padding: "2px 8px", borderRadius: "999px", background: "rgba(185, 152, 135, 0.15)", color: "#b99887" }}>
                       Monthly / Annual
                     </span>
                   </div>
-                  <p style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.86rem", color: "rgba(255, 255, 255, 0.8)", lineHeight: 1.5, margin: 0 }}>
+                  <p style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.8)", lineHeight: 1.5, margin: 0 }}>
                     Unlocks full personal premium perks, 4K screen streaming, 2GB uploads, and includes <strong style={{ color: "#ffffff" }}>1 One-Time Server Ignition (Boost)</strong> for your favorite community.
                   </p>
                 </div>
@@ -401,21 +451,21 @@ export default function IgnitePage() {
                     background: "linear-gradient(135deg, rgba(48, 28, 25, 0.85) 0%, rgba(26, 20, 22, 0.85) 100%)",
                     border: "1.5px solid rgba(255, 122, 69, 0.45)",
                     borderRadius: "16px",
-                    padding: "16px 20px",
+                    padding: "16px 18px",
                     backdropFilter: "blur(18px)",
                     boxShadow: "0 8px 30px rgba(255, 107, 74, 0.15)",
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
                     <FlameIcon size={16} color="#ff7a45" />
-                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1rem", fontWeight: 800, color: "#ffffff" }}>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.98rem", fontWeight: 800, color: "#ffffff" }}>
                       Reelms Ignite All
                     </span>
                     <span style={{ fontSize: "0.7rem", fontWeight: 800, padding: "2px 8px", borderRadius: "999px", background: "rgba(255, 107, 74, 0.25)", color: "#ff8b60" }}>
                       Ultimate Tier
                     </span>
                   </div>
-                  <p style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.86rem", color: "rgba(255, 255, 255, 0.88)", lineHeight: 1.5, margin: 0 }}>
+                  <p style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.88)", lineHeight: 1.5, margin: 0 }}>
                     The all-inclusive power package with 4GB uploads, unlimited groups, plus <strong style={{ color: "#86efac" }}>1 Recurring Server Boost every month</strong> AND <strong style={{ color: "#ff8b60" }}>1 bonus one-time Boost</strong> with no recurring extra fees.
                   </p>
                 </div>
@@ -431,10 +481,10 @@ export default function IgnitePage() {
                     gap: "8px",
                     background: "linear-gradient(135deg, #b99887 0%, #e28a52 100%)",
                     color: "#181416",
-                    padding: "12px 28px",
+                    padding: "11px 26px",
                     borderRadius: "999px",
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                    fontSize: "14px",
+                    fontSize: "13.5px",
                     fontWeight: 800,
                     textDecoration: "none",
                     transition: "transform 0.2s ease, filter 0.2s ease",
@@ -456,16 +506,16 @@ export default function IgnitePage() {
           ══════════════════════════════════════════════════════════ */}
           <section id="compare-table" style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
             {/* Section Header */}
-            <div style={{ textAlign: "center", marginBottom: "36px" }}>
+            <div style={{ textAlign: "center", marginBottom: "32px", width: "100%" }}>
               <h2
                 style={{
                   fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                  fontSize: "clamp(30px, 4.5vw, 48px)",
+                  fontSize: "clamp(26px, 4.5vw, 46px)",
                   fontWeight: 800,
                   color: "#ffffff",
                   letterSpacing: "-0.035em",
                   textTransform: "uppercase",
-                  margin: "0 0 12px",
+                  margin: "0 0 10px",
                 }}
               >
                 LEVEL UP YOUR SQUAD.
@@ -473,10 +523,11 @@ export default function IgnitePage() {
               <p
                 style={{
                   fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                  fontSize: "clamp(14px, 1.4vw, 16px)",
+                  fontSize: "clamp(13px, 1.4vw, 16px)",
                   color: "rgba(255, 255, 255, 0.8)",
                   maxWidth: "540px",
-                  margin: "0 auto 24px",
+                  margin: "0 auto 20px",
+                  padding: "0 8px",
                 }}
               >
                 Pick your ignition tier, unlock radical capabilities, and power up your community with zero bloatware.
@@ -502,15 +553,15 @@ export default function IgnitePage() {
                     color: billing === "monthly" ? "#ffffff" : "rgba(255, 255, 255, 0.6)",
                     border: "none",
                     borderRadius: "999px",
-                    padding: "8px 22px",
+                    padding: "7px 18px",
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                    fontSize: "13px",
+                    fontSize: "12.5px",
                     fontWeight: 800,
                     cursor: "pointer",
                     transition: "all 0.2s ease",
                   }}
                 >
-                  Monthly Billing
+                  Monthly
                 </button>
                 <button
                   type="button"
@@ -520,9 +571,9 @@ export default function IgnitePage() {
                     color: billing === "yearly" ? "#ffffff" : "rgba(255, 255, 255, 0.6)",
                     border: "none",
                     borderRadius: "999px",
-                    padding: "8px 22px",
+                    padding: "7px 18px",
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                    fontSize: "13px",
+                    fontSize: "12.5px",
                     fontWeight: 800,
                     cursor: "pointer",
                     display: "flex",
@@ -531,7 +582,7 @@ export default function IgnitePage() {
                     transition: "all 0.2s ease",
                   }}
                 >
-                  <span>Yearly Billing</span>
+                  <span>Yearly</span>
                   <span style={{ background: "#68c586", color: "#181416", fontSize: "10px", fontWeight: 900, padding: "1px 6px", borderRadius: "999px" }}>
                     -20%
                   </span>
@@ -539,8 +590,10 @@ export default function IgnitePage() {
               </div>
             </div>
 
-            {/* Mobile Tab Selector */}
-            <div className="flex md:hidden" style={{ width: "100%", justifyContent: "center", marginBottom: "20px" }}>
+            {/* ══════════════════════════════════════════════════════════
+                MOBILE SEGMENTED PAIR SWITCHER
+            ══════════════════════════════════════════════════════════ */}
+            <div className="flex md:hidden" style={{ width: "100%", justifyContent: "center", marginBottom: "16px" }}>
               <div
                 style={{
                   display: "flex",
@@ -558,15 +611,16 @@ export default function IgnitePage() {
                   onClick={() => setMobileCompare("free-ignite")}
                   style={{
                     flex: 1,
-                    background: mobileCompare === "free-ignite" ? "rgba(185, 152, 135, 0.25)" : "transparent",
+                    background: mobileCompare === "free-ignite" ? "rgba(185, 152, 135, 0.28)" : "transparent",
                     color: mobileCompare === "free-ignite" ? "#fff" : "rgba(255, 255, 255, 0.6)",
                     border: "none",
                     borderRadius: "999px",
-                    padding: "7px 8px",
+                    padding: "7px 6px",
                     fontSize: "11px",
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
                     fontWeight: 800,
                     cursor: "pointer",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   Free vs Ignite
@@ -576,15 +630,16 @@ export default function IgnitePage() {
                   onClick={() => setMobileCompare("ignite-all")}
                   style={{
                     flex: 1,
-                    background: mobileCompare === "ignite-all" ? "rgba(255, 107, 74, 0.28)" : "transparent",
+                    background: mobileCompare === "ignite-all" ? "rgba(255, 107, 74, 0.3)" : "transparent",
                     color: mobileCompare === "ignite-all" ? "#ff8b60" : "rgba(255, 255, 255, 0.6)",
                     border: "none",
                     borderRadius: "999px",
-                    padding: "7px 8px",
+                    padding: "7px 6px",
                     fontSize: "11px",
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
                     fontWeight: 800,
                     cursor: "pointer",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   Ignite vs All
@@ -594,15 +649,16 @@ export default function IgnitePage() {
                   onClick={() => setMobileCompare("free-all")}
                   style={{
                     flex: 1,
-                    background: mobileCompare === "free-all" ? "rgba(185, 152, 135, 0.25)" : "transparent",
+                    background: mobileCompare === "free-all" ? "rgba(185, 152, 135, 0.28)" : "transparent",
                     color: mobileCompare === "free-all" ? "#fff" : "rgba(255, 255, 255, 0.6)",
                     border: "none",
                     borderRadius: "999px",
-                    padding: "7px 8px",
+                    padding: "7px 6px",
                     fontSize: "11px",
                     fontFamily: "var(--font-karla), 'Karla', sans-serif",
                     fontWeight: 800,
                     cursor: "pointer",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   Free vs All
@@ -625,7 +681,7 @@ export default function IgnitePage() {
                 boxShadow: "0 24px 60px rgba(0, 0, 0, 0.5)",
               }}
             >
-              {/* Table Column Headers & Pricing Cards (Desktop Grid) */}
+              {/* ── Table Column Headers & Pricing Cards (Desktop Grid) ── */}
               <div
                 style={{
                   display: "grid",
@@ -782,6 +838,144 @@ export default function IgnitePage() {
                 </div>
               </div>
 
+              {/* ── Mobile Tier Pricing Header Cards ── */}
+              <div
+                className="grid md:hidden"
+                style={{
+                  gridTemplateColumns: "1fr 1fr",
+                  borderBottom: "1px solid rgba(185, 152, 135, 0.2)",
+                  background: "rgba(32, 25, 29, 0.8)",
+                  padding: "16px 12px",
+                  gap: "10px",
+                }}
+              >
+                {/* Left Card */}
+                <div
+                  style={{
+                    background: leftTier.isHighlighted ? "rgba(255, 107, 74, 0.12)" : "rgba(185, 152, 135, 0.06)",
+                    border: `1px solid ${leftTier.isHighlighted ? "rgba(255, 107, 74, 0.35)" : "rgba(185, 152, 135, 0.2)"}`,
+                    borderRadius: "16px",
+                    padding: "12px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "4px",
+                  }}
+                >
+                  <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.95rem", fontWeight: 800, color: leftTier.isHighlighted ? "#ff8b60" : "#ffffff" }}>
+                    {leftTier.title}
+                  </span>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.35rem", fontWeight: 800, color: "#ffffff" }}>
+                      {leftTier.price}
+                    </span>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.55)" }}>
+                      {leftTier.period}
+                    </span>
+                  </div>
+                  {leftTier.btnHref ? (
+                    <Link
+                      href={leftTier.btnHref}
+                      style={{
+                        marginTop: "6px",
+                        textAlign: "center",
+                        background: "rgba(185, 152, 135, 0.12)",
+                        border: "1px solid rgba(185, 152, 135, 0.25)",
+                        color: "#f5e6de",
+                        padding: "6px 10px",
+                        borderRadius: "999px",
+                        fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                        fontSize: "11px",
+                        fontWeight: 800,
+                        textDecoration: "none",
+                      }}
+                    >
+                      {leftTier.btnText}
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      style={{
+                        marginTop: "6px",
+                        background: leftTier.isHighlighted ? "linear-gradient(135deg, #ff7a45, #e28a52)" : "rgba(185, 152, 135, 0.15)",
+                        border: leftTier.isHighlighted ? "none" : "1px solid rgba(185, 152, 135, 0.35)",
+                        color: leftTier.isHighlighted ? "#181416" : "#ffffff",
+                        padding: "6px 10px",
+                        borderRadius: "999px",
+                        fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                        fontSize: "11px",
+                        fontWeight: 800,
+                        cursor: "pointer",
+                      }}
+                    >
+                      {leftTier.btnText}
+                    </button>
+                  )}
+                </div>
+
+                {/* Right Card */}
+                <div
+                  style={{
+                    background: rightTier.isHighlighted ? "rgba(255, 107, 74, 0.12)" : "rgba(185, 152, 135, 0.06)",
+                    border: `1px solid ${rightTier.isHighlighted ? "rgba(255, 107, 74, 0.35)" : "rgba(185, 152, 135, 0.2)"}`,
+                    borderRadius: "16px",
+                    padding: "12px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "4px",
+                  }}
+                >
+                  <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.95rem", fontWeight: 800, color: rightTier.isHighlighted ? "#ff8b60" : "#ffffff" }}>
+                    {rightTier.title}
+                  </span>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "1.35rem", fontWeight: 800, color: "#ffffff" }}>
+                      {rightTier.price}
+                    </span>
+                    <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.68rem", color: "rgba(255, 255, 255, 0.55)" }}>
+                      {rightTier.period}
+                    </span>
+                  </div>
+                  {rightTier.btnHref ? (
+                    <Link
+                      href={rightTier.btnHref}
+                      style={{
+                        marginTop: "6px",
+                        textAlign: "center",
+                        background: "rgba(185, 152, 135, 0.12)",
+                        border: "1px solid rgba(185, 152, 135, 0.25)",
+                        color: "#f5e6de",
+                        padding: "6px 10px",
+                        borderRadius: "999px",
+                        fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                        fontSize: "11px",
+                        fontWeight: 800,
+                        textDecoration: "none",
+                      }}
+                    >
+                      {rightTier.btnText}
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      style={{
+                        marginTop: "6px",
+                        background: rightTier.isHighlighted ? "linear-gradient(135deg, #ff7a45, #e28a52)" : "rgba(185, 152, 135, 0.15)",
+                        border: rightTier.isHighlighted ? "none" : "1px solid rgba(185, 152, 135, 0.35)",
+                        color: rightTier.isHighlighted ? "#181416" : "#ffffff",
+                        padding: "6px 10px",
+                        borderRadius: "999px",
+                        fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                        fontSize: "11px",
+                        fontWeight: 800,
+                        cursor: "pointer",
+                      }}
+                    >
+                      {rightTier.btnText}
+                    </button>
+                  )}
+                </div>
+              </div>
+
               {/* ── Table Comparison Rows ── */}
               <div>
                 {COMPARISON_DATA.map((cat, catIdx) => (
@@ -789,7 +983,7 @@ export default function IgnitePage() {
                     {/* Category Header */}
                     <div
                       style={{
-                        padding: "16px 24px",
+                        padding: "14px 20px",
                         background: "rgba(36, 28, 32, 0.85)",
                         borderTop: catIdx > 0 ? "1px solid rgba(185, 152, 135, 0.2)" : "none",
                         borderBottom: "1px solid rgba(185, 152, 135, 0.12)",
@@ -802,7 +996,7 @@ export default function IgnitePage() {
                       <span
                         style={{
                           fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                          fontSize: "0.86rem",
+                          fontSize: "0.85rem",
                           fontWeight: 800,
                           color: "#ffd4be",
                           letterSpacing: "0.06em",
@@ -857,41 +1051,58 @@ export default function IgnitePage() {
                     {/* Category Rows (Mobile 2-Column Mode) */}
                     <div className="block md:hidden">
                       {cat.rows.map((row) => {
-                        const leftKey = mobileCompare === "ignite-all" ? "ignite" : "free";
-                        const rightKey = mobileCompare === "free-ignite" ? "ignite" : "igniteAll";
-                        const leftLabel = leftKey === "free" ? "Free" : "Ignite";
-                        const rightLabel = rightKey === "ignite" ? "Ignite" : "Ignite All";
+                        const leftVal = getColValue(row, mobileKeys.left);
+                        const rightVal = getColValue(row, mobileKeys.right);
 
                         return (
                           <div
                             key={row.name}
                             style={{
-                              padding: "14px 18px",
-                              borderBottom: "1px solid rgba(185, 152, 135, 0.1)",
+                              padding: "12px 14px",
+                              borderBottom: "1px solid rgba(185, 152, 135, 0.08)",
                               display: "flex",
                               flexDirection: "column",
-                              gap: "8px",
+                              gap: "6px",
                             }}
                           >
-                            <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.88rem", fontWeight: 800, color: "#fff" }}>
+                            <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.84rem", fontWeight: 800, color: "#ffffff", lineHeight: 1.3 }}>
                               {row.name}
                             </span>
-                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-                              <div style={{ background: "rgba(185, 152, 135, 0.05)", borderRadius: "10px", padding: "8px 12px" }}>
-                                <div style={{ fontSize: "10px", fontFamily: "var(--font-karla), 'Karla', sans-serif", color: "rgba(255, 255, 255, 0.5)", textTransform: "uppercase", marginBottom: "2px", fontWeight: 700 }}>
-                                  {leftLabel}
+                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
+                              <div
+                                style={{
+                                  background: "rgba(185, 152, 135, 0.06)",
+                                  borderRadius: "10px",
+                                  padding: "8px 10px",
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  gap: "2px",
+                                }}
+                              >
+                                <div style={{ fontSize: "9.5px", fontFamily: "var(--font-karla), 'Karla', sans-serif", color: "rgba(255, 255, 255, 0.45)", textTransform: "uppercase", fontWeight: 800 }}>
+                                  {leftTier.title}
                                 </div>
-                                <div style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.8)", fontWeight: 600 }}>
-                                  {getColValue(row, leftKey)}
+                                <div style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.76rem", color: "rgba(255, 255, 255, 0.8)", fontWeight: 600, wordBreak: "break-word" }}>
+                                  {leftVal}
                                 </div>
                               </div>
 
-                              <div style={{ background: "rgba(255, 107, 74, 0.08)", border: "1px solid rgba(255, 107, 74, 0.2)", borderRadius: "10px", padding: "8px 12px" }}>
-                                <div style={{ fontSize: "10px", fontFamily: "var(--font-karla), 'Karla', sans-serif", color: "#ff8b60", textTransform: "uppercase", marginBottom: "2px", fontWeight: 800 }}>
-                                  {rightLabel}
+                              <div
+                                style={{
+                                  background: rightTier.isHighlighted ? "rgba(255, 107, 74, 0.1)" : "rgba(185, 152, 135, 0.06)",
+                                  border: rightTier.isHighlighted ? "1px solid rgba(255, 107, 74, 0.25)" : "none",
+                                  borderRadius: "10px",
+                                  padding: "8px 10px",
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  gap: "2px",
+                                }}
+                              >
+                                <div style={{ fontSize: "9.5px", fontFamily: "var(--font-karla), 'Karla', sans-serif", color: rightTier.isHighlighted ? "#ff8b60" : "rgba(255, 255, 255, 0.45)", textTransform: "uppercase", fontWeight: 800 }}>
+                                  {rightTier.title}
                                 </div>
-                                <div style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.78rem", color: "#ff8b60", fontWeight: 800 }}>
-                                  {getColValue(row, rightKey)}
+                                <div style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "0.76rem", color: rightTier.isHighlighted ? "#ff8b60" : "#ffffff", fontWeight: 800, wordBreak: "break-word" }}>
+                                  {rightVal}
                                 </div>
                               </div>
                             </div>
