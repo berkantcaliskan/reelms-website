@@ -96,11 +96,13 @@ export default function HumanCentricPage() {
               </p>
 
               <h1 style={{
-                fontFamily: "var(--font-dela), sans-serif",
-                fontSize: "clamp(28px, 5.5vw, 52px)",
-                fontWeight: 400,
+                fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                fontSize: "clamp(30px, 5.5vw, 52px)",
+                fontWeight: 800,
                 lineHeight: 1.08,
-                color: "#b99887",
+                letterSpacing: "-0.035em",
+                textTransform: "uppercase",
+                color: "#ffffff",
                 margin: 0,
               }}>
                 Human-Centric{" "}
@@ -141,19 +143,21 @@ export default function HumanCentricPage() {
                   {/* Section heading */}
                   <div style={{ display: "flex", alignItems: "baseline", gap: "14px" }}>
                     <span style={{
-                      fontFamily: "var(--font-dela), sans-serif",
+                      fontFamily: "var(--font-karla), 'Karla', sans-serif",
                       fontSize: "clamp(13px, 1.8vw, 16px)",
+                      fontWeight: 800,
                       color: "#68c586",
-                      opacity: 0.6,
+                      opacity: 0.7,
                       flexShrink: 0,
                     }}>
                       {p.label}.
                     </span>
                     <p style={{
-                      fontFamily: "var(--font-dela), sans-serif",
-                      fontSize: "clamp(18px, 2.5vw, 24px)",
-                      fontWeight: 400,
-                      color: "#b99887",
+                      fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                      fontSize: "clamp(20px, 2.5vw, 26px)",
+                      fontWeight: 800,
+                      letterSpacing: "-0.02em",
+                      color: "#ffffff",
                       margin: 0,
                     }}>
                       {p.title}

@@ -100,9 +100,11 @@ export default function LearnPage() {
                   padding: "20px 22px",
                 }}>
                   <p style={{
-                    fontFamily: "var(--font-dela), sans-serif",
-                    fontSize: "14px",
-                    color: accent,
+                    fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                    fontSize: "15px",
+                    fontWeight: 800,
+                    color: "#ffffff",
+                    letterSpacing: "-0.01em",
                     marginBottom: "8px",
                   }}>{title}</p>
                   <p style={{ ...body, fontSize: "13px" }}>{desc}</p>

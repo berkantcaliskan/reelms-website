@@ -129,9 +129,11 @@ export default function HelpPage() {
           {/* Full-width title */}
           <h1 style={{
             fontFamily: "var(--font-karla), 'Karla', sans-serif",
-            fontSize: "clamp(28px, 5vw, 44px)",
-            color: "#b99887",
+            fontSize: "clamp(28px, 5vw, 48px)",
+            color: "#ffffff",
             fontWeight: 800,
+            letterSpacing: "-0.035em",
+            textTransform: "uppercase",
             marginBottom: "44px",
           }}>
             Reelms Help{" "}
@@ -172,10 +174,11 @@ export default function HelpPage() {
                   {faqs.map(({ q, a }, i) => (
                     <div key={i}>
                       <p style={{
-                        fontFamily: "var(--font-dela), sans-serif",
-                        fontSize: "clamp(14px, 1.7vw, 17px)",
-                        color: "#b99887",
-                        fontWeight: 400,
+                        fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                        fontSize: "clamp(15px, 1.7vw, 18px)",
+                        color: "#ffffff",
+                        fontWeight: 800,
+                        letterSpacing: "-0.015em",
                         marginBottom: "9px",
                       }}>
                         {q}

@@ -66,11 +66,13 @@ export default function FutureVisionPage() {
               </p>
 
               <h1 style={{
-                fontFamily: "var(--font-dela), sans-serif",
-                fontSize: "clamp(28px, 5.5vw, 52px)",
-                fontWeight: 400,
+                fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                fontSize: "clamp(30px, 5.5vw, 52px)",
+                fontWeight: 800,
                 lineHeight: 1.08,
-                color: "#b99887",
+                letterSpacing: "-0.035em",
+                textTransform: "uppercase",
+                color: "#ffffff",
                 margin: 0,
               }}>
                 The Future{" "}
@@ -164,10 +166,11 @@ export default function FutureVisionPage() {
                     </div>
 
                     <p style={{
-                      fontFamily: "var(--font-dela), sans-serif",
-                      fontSize: "clamp(16px, 2vw, 20px)",
-                      fontWeight: 400,
-                      color: "#b99887",
+                      fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                      fontSize: "clamp(17px, 2vw, 21px)",
+                      fontWeight: 800,
+                      letterSpacing: "-0.015em",
+                      color: "#ffffff",
                       margin: 0,
                     }}>
                       {p.title}

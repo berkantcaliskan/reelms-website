@@ -68,11 +68,13 @@ export default function StructurePage() {
               </p>
 
               <h1 style={{
-                fontFamily: "var(--font-dela), sans-serif",
-                fontSize: "clamp(28px, 5.5vw, 52px)",
-                fontWeight: 400,
+                fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                fontSize: "clamp(30px, 5.5vw, 52px)",
+                fontWeight: 800,
                 lineHeight: 1.08,
-                color: "#b99887",
+                letterSpacing: "-0.035em",
+                textTransform: "uppercase",
+                color: "#ffffff",
                 margin: 0,
               }}>
                 All-in-One{" "}
@@ -110,10 +112,11 @@ export default function StructurePage() {
             {/* Technical Stack */}
             <section style={{ display: "flex", flexDirection: "column", gap: "0" }}>
               <p style={{
-                fontFamily: "var(--font-dela), sans-serif",
-                fontSize: "clamp(18px, 2.5vw, 24px)",
-                fontWeight: 400,
-                color: "#b99887",
+                fontFamily: "var(--font-karla), 'Karla', sans-serif",
+                fontSize: "clamp(20px, 2.5vw, 26px)",
+                fontWeight: 800,
+                letterSpacing: "-0.02em",
+                color: "#ffffff",
                 marginBottom: "16px",
               }}>
                 The Unified Technical Stack

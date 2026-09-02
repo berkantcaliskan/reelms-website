@@ -131,11 +131,13 @@ export default function RadicalPrivacyPage() {
               </p>
 
               <h1 style={{
-                fontFamily: "var(--font-dela), sans-serif",
+                fontFamily: "var(--font-karla), 'Karla', sans-serif",
                 fontSize: "clamp(32px, 6vw, 58px)",
-                fontWeight: 400,
+                fontWeight: 800,
                 lineHeight: 1.05,
-                color: "#b99887",
+                letterSpacing: "-0.035em",
+                textTransform: "uppercase",
+                color: "#ffffff",
                 margin: 0,
               }}>
                 Radical Privacy{" "}

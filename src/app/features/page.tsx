@@ -265,15 +265,14 @@ export default function FeaturesPage() {
           </div>
 
           {/* ══════════════════════════════════════════════════════════
-              FEATURES GRID (8 POLISHED CARDS)
+              FEATURES GRID (2 ROWS OF 4 — CARDLESS SLEEK LAYOUT)
           ══════════════════════════════════════════════════════════ */}
           <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
-              gap: "24px",
+              gap: "48px 32px",
               width: "100%",
-              marginBottom: "clamp(56px, 8vh, 88px)",
+              marginBottom: "clamp(60px, 9vh, 96px)",
             }}
           >
             {FEATURES_LIST.map((feat, idx) => (
@@ -281,35 +280,27 @@ export default function FeaturesPage() {
                 key={feat.title}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.06 }}
-                whileHover={{ y: -4, borderColor: "rgba(185, 152, 135, 0.4)" }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
                 style={{
-                  background: "rgba(24, 20, 22, 0.7)",
-                  backdropFilter: "blur(20px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                  border: "1px solid rgba(185, 152, 135, 0.18)",
-                  borderRadius: "22px",
-                  padding: "28px 24px",
                   display: "flex",
                   flexDirection: "column",
-                  gap: "14px",
+                  gap: "12px",
                   position: "relative",
-                  transition: "all 0.2s ease",
-                  boxShadow: "0 14px 36px rgba(0, 0, 0, 0.4)",
                 }}
               >
-                {/* Top Row: Icon & Tag */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                {/* Top Row: Icon + Tag */}
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "2px" }}>
                   <div
                     style={{
-                      width: "46px",
-                      height: "46px",
-                      borderRadius: "14px",
+                      width: "42px",
+                      height: "42px",
+                      borderRadius: "12px",
                       background: "rgba(185, 152, 135, 0.08)",
                       border: "1px solid rgba(185, 152, 135, 0.15)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+                      flexShrink: 0,
                     }}
                   >
                     {feat.icon}
@@ -320,14 +311,10 @@ export default function FeaturesPage() {
                       fontFamily: "var(--font-karla), 'Karla', sans-serif",
                       fontSize: "0.72rem",
                       fontWeight: 800,
-                      letterSpacing: "0.05em",
+                      letterSpacing: "0.06em",
                       textTransform: "uppercase",
                       color: "#b99887",
-                      opacity: 0.7,
-                      padding: "3px 10px",
-                      borderRadius: "999px",
-                      background: "rgba(185, 152, 135, 0.06)",
-                      border: "1px solid rgba(185, 152, 135, 0.12)",
+                      opacity: 0.8,
                     }}
                   >
                     {feat.tag}
@@ -339,11 +326,12 @@ export default function FeaturesPage() {
                   <h3
                     style={{
                       fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                      fontSize: "1.1rem",
+                      fontSize: "1.12rem",
                       fontWeight: 800,
                       color: "#ffffff",
                       margin: "0 0 8px",
-                      letterSpacing: "-0.01em",
+                      letterSpacing: "-0.02em",
+                      lineHeight: 1.25,
                     }}
                   >
                     {feat.title}
@@ -351,9 +339,9 @@ export default function FeaturesPage() {
                   <p
                     style={{
                       fontFamily: "var(--font-karla), 'Karla', sans-serif",
-                      fontSize: "0.86rem",
-                      color: "rgba(255, 255, 255, 0.7)",
-                      lineHeight: 1.55,
+                      fontSize: "0.875rem",
+                      color: "rgba(255, 255, 255, 0.72)",
+                      lineHeight: 1.6,
                       margin: 0,
                     }}
                   >
