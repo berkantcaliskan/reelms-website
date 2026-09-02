@@ -29,15 +29,15 @@ const sections = [
     faqs: [
       {
         q: "How is my data protected?",
-        a: "We utilize modern architecture and encryption standards compatible with Vite and Capacitor to ensure data security.",
+        a: "All data in transit is protected via TLS 1.3, and data at rest is encrypted using AES-256. We do not sell user metadata or track behavior across the web.",
       },
       {
         q: "Where can I find the Privacy Policy?",
-        a: "The full Privacy Policy is available within the platform documentation, detailing how your account information and content are handled.",
+        a: "Our complete Radical Privacy Manifesto is available directly on our website, detailing our Zero-Bloat and zero-tracking commitments.",
       },
       {
         q: "Can I delete my account?",
-        a: "Yes, users have the right to request the deletion of their accounts and the permanent removal of their data from the system.",
+        a: "Yes. Deleting your account triggers a complete hard-wipe of your personal data from active servers within 24 hours.",
       },
     ],
   },
@@ -46,15 +46,15 @@ const sections = [
     faqs: [
       {
         q: "What are the file upload limits?",
-        a: "During the current phase, individual file uploads are subject to specific capacity thresholds to maintain system performance.",
+        a: "Free accounts support uploads up to 1 GB. Upgrading to Reelms Ignite increases your limit to 2 GB, and Ignite All unlocks up to 4 GB for lossless files and heavy media.",
       },
       {
-        q: "Why can't I access Ignite features?",
-        a: "Reelms is currently in its Beta phase. Ignite features and in-app purchases are temporarily disabled while we optimize the infrastructure.",
+        q: "How do Ignite and Server Boosts work?",
+        a: "Reelms Ignite unlocks personal premium perks (4K 60FPS streaming, custom identity, expanded limits) and includes 1 one-time server boost. Ignite All provides an all-inclusive power package with 1 recurring monthly server boost plus 1 bonus boost.",
       },
       {
-        q: "What will Ignite offer?",
-        a: "Once launched, Ignite will provide premium tier ecosystems, enhanced file allocation, and specialized scaling toolkits for growing communities.",
+        q: "What is the member capacity per Reelm?",
+        a: "Free Reelms support up to 250,000 members with zero bloat. Ignite boosts capacity to 5,000,000 members, and Ignite All unlocks unlimited scale.",
       },
     ],
   },
@@ -63,11 +63,11 @@ const sections = [
     faqs: [
       {
         q: "I am experiencing a technical bug.",
-        a: "Since we are in the Beta phase, we are constantly fine-tuning the ecosystem. Please report any technical issues through our official contact channels.",
+        a: "Please report any technical issues or security concerns through our official contact form below or via the Report Vulnerability page.",
       },
       {
-        q: "Is the platform mobile-friendly?",
-        a: "Yes, the architecture is built using Capacitor to ensure a consistent experience across different devices.",
+        q: "Is Reelms cross-platform?",
+        a: "Yes, Reelms is built for seamless performance across Web, Windows Desktop, macOS, and Mobile devices with instant real-time synchronization.",
       },
     ],
   },

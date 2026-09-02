@@ -7,11 +7,11 @@ import Footer from "@/components/Footer";
 const milestones = [
   {
     title: "Scalability",
-    body: "A space supporting up to 25,000 users in its core version, where anyone can establish their own \"kingdom.\"",
+    body: "A space supporting up to 250,000 users in its core version, where anyone can establish their own \"kingdom.\"",
   },
   {
     title: "Freedom",
-    body: "A sharing environment where creativity isn't stifled by technical constraints, featuring 2 GB file limits.",
+    body: "A sharing environment where creativity isn't stifled by technical constraints, featuring generous file limits from 1 GB up to 4 GB with Ignite.",
   },
   {
     title: "Ecosystem-Centric",
@@ -122,7 +122,7 @@ export default function OriginStoryPage() {
               </p>
 
               <p style={{ ...body, opacity: 0.6 }}>
-                Reelms <span style={{ opacity: 0.45 }}>(formerly we have named it Hubbit)</span> was initially envisioned as a simple community management tool. However, as technology advanced and needs deepened, the vision evolved. By transitioning to modern architectures like Vite and Capacitor, the goal shifted: Reelms was no longer just a web tool, but a fast, flexible structure thriving in the mobile world.
+                Reelms <span style={{ opacity: 0.45 }}>(formerly we have named it Hubbit)</span> was initially envisioned as a simple community management tool. However, as technology advanced and needs deepened, the vision evolved. By transitioning to a high-performance cross-platform architecture, the goal shifted: Reelms was no longer just a web tool, but a fast, flexible ecosystem thriving seamlessly across desktop, web, and mobile.
               </p>
 
               <p style={{ ...body, opacity: 0.5 }}>
