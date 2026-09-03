@@ -22,7 +22,7 @@ export default function CTALinks() {
         onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
         onMouseLeave={e => (e.currentTarget.style.opacity = "0.7")}
       >
-        Start <strong>Web App</strong> ›
+        <strong>Reelms Web</strong> ›
       </Link>
 
       <span style={{ opacity: 0.25, color: "var(--ta)", fontSize: "clamp(13px, 1.6vw, 16px)" }}>|</span>

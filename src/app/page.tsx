@@ -119,7 +119,7 @@ export default function Beginning() {
                   onMouseEnter={e => { e.currentTarget.style.filter = "brightness(1.1)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
                   onMouseLeave={e => { e.currentTarget.style.filter = "brightness(1)"; e.currentTarget.style.transform = "translateY(0)"; }}
                 >
-                  Launch Web App ›
+                  Reelms Web ›
                 </Link>
 
                 <Link

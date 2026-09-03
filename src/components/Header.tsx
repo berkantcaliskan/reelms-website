@@ -171,7 +171,7 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Start Web App — desktop only */}
+        {/* Reelms Web — desktop only */}
         <Link
           href="https://app.reelms.io"
           className="hidden lg:flex"
@@ -190,8 +190,8 @@ export default function Header() {
           onMouseEnter={e => { e.currentTarget.style.background = "rgba(185,152,135,0.12)"; e.currentTarget.style.borderColor = "rgba(185,152,135,0.35)"; }}
           onMouseLeave={e => { e.currentTarget.style.background = "rgba(185,152,135,0.07)"; e.currentTarget.style.borderColor = "rgba(185,152,135,0.2)"; }}
         >
-          <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "14px", color: "#b99887", fontWeight: 700 }}>Start </span>
-          <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "14px", color: "#b99887", fontWeight: 800 }}>Web App</span>
+          <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "14px", color: "#b99887", fontWeight: 700 }}>Reelms </span>
+          <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "14px", color: "#b99887", fontWeight: 800 }}>Web</span>
         </Link>
 
         {/* Hamburger button — mobile/tablet only */}
@@ -314,7 +314,7 @@ export default function Header() {
                 </button>
               </div>
 
-              {/* Start Web App CTA Button */}
+              {/* Start Reelms Web CTA Button */}
               <Link
                 href="https://app.reelms.io"
                 onClick={() => setOpen(false)}
@@ -334,8 +334,8 @@ export default function Header() {
                 onMouseEnter={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.22)"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "rgba(185, 152, 135, 0.12)"; }}
               >
-                <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "15px", color: "#b99887", fontWeight: 700 }}>Start </span>
-                <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "15px", color: "#b99887", fontWeight: 800 }}>Web App ›</span>
+                <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "15px", color: "#b99887", fontWeight: 700 }}>Reelms </span>
+                <span style={{ fontFamily: "var(--font-karla), 'Karla', sans-serif", fontSize: "15px", color: "#b99887", fontWeight: 800 }}>Web ›</span>
               </Link>
 
               {/* Navigation Links */}

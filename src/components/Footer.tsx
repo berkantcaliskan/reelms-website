@@ -53,7 +53,7 @@ export default function Footer() {
               Product
             </span>
             <Link href="https://app.reelms.io" style={{ color: "rgba(245, 230, 222, 0.75)", textDecoration: "none", fontSize: "0.85rem" }}>
-              Web App
+              Reelms Web
             </Link>
             <Link href="/download" style={{ color: "rgba(245, 230, 222, 0.75)", textDecoration: "none", fontSize: "0.85rem" }}>
               Download Desktop

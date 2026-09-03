@@ -148,7 +148,7 @@ export default function DownloadPage() {
                   onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
                   onMouseLeave={e => (e.currentTarget.style.opacity = "0.9")}
                 >
-                  Prefer to stay in your browser? Launch Web App ›
+                  Prefer to stay in your browser? Open Reelms Web ›
                 </Link>
               </div>
             </div>
